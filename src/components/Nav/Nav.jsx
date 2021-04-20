@@ -25,6 +25,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import HomeIcon from '@material-ui/icons/Home';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -60,25 +61,26 @@ function Nav() {
   //setup variables for MUI drawer
   const navList = [ {
     text: loginLinkData.text,
-    icon: <InboxIcon />,
-    onClick: ()=> history.push(loginLinkData.path)
+    icon: <HomeIcon />,
+    onClick: ()=>{handleNavClose(); history.push(loginLinkData.path)}
   }, {
     text: 'Create Request',
     icon: <MailIcon />,
-    onClick: ()=> history.push('/create')
+    onClick: ()=> {handleNavClose(); history.push('/create')}
   }, {
     text: 'About/Profile',
     icon: <MailIcon />,
-    onClick: ()=> history.push('/about')
+    onClick: ()=> {handleNavClose(); history.push('/about')}
   }, {
     text: 'Logout',
     icon: <MailIcon />,
-    onClick: ()=> dispatch({ type: 'LOGOUT' })
+    onClick: ()=> {handleNavClose(); dispatch({ type: 'LOGOUT' })}
   } ]
 
 
 
   return (
+    <> 
     <div className="nav">
       <IconButton
         color="inherit"
@@ -88,6 +90,7 @@ function Nav() {
       >
         <MenuIcon />
       </IconButton>
+      </div>
       <MUIDrawer 
         className={classes.drawer}
         anchor="left"
@@ -109,7 +112,7 @@ function Nav() {
           )}
         </List>
       </MUIDrawer>
-    </div>
+    </>
     // <div className="nav">
     //   <Link to="/home">
     //     <h2 className="nav-title">Prime Solo Project</h2>

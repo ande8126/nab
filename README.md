@@ -9,6 +9,87 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
 - Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account.
 
 
+## To-do
+[ ] Setup
+  [x] watch boilerplate vids
+  [ ] setup/review components
+    - Registration 
+    - Home
+    - RequestList
+    - RequestItem
+    - Create
+    - Confirmation
+  [ ] setup Routes
+    - Home screen should replace landing screen
+    - Do I want to keep the nav bar as is? New style? -- WILL NEED TO CHANGE FOR MOBILE
+    - Setup links and useHistory for Nab's workflow (register/login >>> Home >>> CreateRequest >>> Confirmation >>> Home)
+[ ] Rework Nav
+  [ ] watch Youtube vid on MaterialUI "drawers"
+  [ ] replace Nav element with popout
+  [ ] hamburger menu icon
+[ ] update register screen - RegisterForm
+  [ ] update user db to account for first and last name
+  [ ] add two inputs for first and last name
+  [ ] add first and last to payload, POST route to make sure it's getting to db
+  [ ] "join" button
+[ ] Home pt 1
+  [ ] build out component
+  [ ] should replace landing screen
+  [ ] prep for GET route (SHOULD THIS HAPPEN ON REQUESTLIST?)
+    - useEffect, dispatch and useSelector 
+    - saga
+    - db setup - 'request' table and '/api/request' router
+  [ ] conditional render for no entries -- "make your first request!"
+[ ] CreateRequest pt 1
+  [ ] build out component
+    - inputs
+    - buttons
+  [ ] dispatch for GET - pre-formatted letter text
+  [ ] dispatch for POST - sending finished product to 'requests'
+  [ ] useSelector for letter text
+  [ ] functions to handle inputs
+  [ ] function to handle "state" dropdown
+  [ ] function to link and bring the whole "request" object to "confirmation" screen
+  [ ] back button-- X button in upper right to "close"?
+[ ] CreateRequest pt 2
+  [ ] reducer to handle data back from GET route for letters
+  [ ] saga for GET call from "letter" table
+  [ ] GET route on server side
+[ ] Confirmation screen
+  [ ] build out component
+    - "your request" header
+    - text box to show completed request
+    - "copy" button
+    - "home" button
+  [ ] function for copy button
+  [ ] function for home button
+  [ ] saga for POST call to "request" table
+  [ ] make request.router.js file
+  [ ] POST route on server side
+[ ] Home pt 2
+  [ ] finalize GET route from "request" table to component
+  [ ] setup "card" components in RequestItem
+  [ ] Finalize where GET route should go (RequestList or Home?)
+  [ ] dispatch for Delete btn
+  [ ] function to handle Response toggle (DELETE)
+  [ ] dispatch for Response (PUT)
+[ ] CreateRequest pt 3
+  [ ] entries for all 50 states
+    - MuckRock API?
+    - Writing entries for each state
+[ ] Styling
+  [ ] Nav bar - drawers/popout menu
+  [ ] Home - "+" icon for linking to CreateRequest
+  [ ] RequestItem cards
+  [ ] RequestList
+  [ ] CreateRequest - buttons, inputs
+  [ ] Confirmation - textbox, buttons
+  [ ] Registration screen - inputs/buttons
+
+[ ] Stretch goals...
+
+
+
 ## Prerequisites
 
 Before you get started, make sure you have the following software installed on your computer:

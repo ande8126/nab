@@ -23,18 +23,31 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import CreateRequest from '../CreateRequest/CreateRequest';
 import ConfirmRequest from '../ConfirmRequest/ConfirmRequest';
 
-import './App.css';
+//styling
+import './App.css';//default
+import { makeStyles } from '@material-ui/core/styles';
+import { FormHelperText } from '@material-ui/core';
+//useStyles to make display flex with nav bar
+const useStyles = makeStyles({
+  container: {
+    display: 'flex'
+  }
+})
 
 function App() {
   const dispatch = useDispatch();
 
+
+
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
+  //styling classNames
+  const classes = useStyles();
 
   return (
     <Router>
-      <div>
+      <div className={classes.container}>
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}

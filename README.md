@@ -12,14 +12,14 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
 ## To-do
 [ ] Setup
   [x] watch boilerplate vids
-  [ ] setup/review components
+  [x] setup/review components
     - Registration 
     - Home
     - RequestList
     - RequestItem
     - Create
     - Confirmation
-  [ ] setup Routes
+  [x] setup Routes
     - Home screen should replace landing screen
     - Do I want to keep the nav bar as is? New style? -- WILL NEED TO CHANGE FOR MOBILE
     - Setup links and useHistory for Nab's workflow (register/login >>> Home >>> CreateRequest >>> Confirmation >>> Home)

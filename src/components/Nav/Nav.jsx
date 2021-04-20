@@ -5,14 +5,15 @@ import './Nav.css';
 import {useSelector, useDispatch} from 'react-redux';
 //mui drawer for making the nav a popoutmenu
 import { 
-  Drawer as MUIDrawer, 
+  Drawer as MUIDrawer,
+  IconButton, 
   ListItem,
   List, 
   ListItemIcon, 
   ListItemText 
 } from '@material-ui/core';
 //styling
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 const  useStyles = makeStyles({
   drawer: {
     width: '190px'
@@ -22,6 +23,8 @@ const  useStyles = makeStyles({
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -41,6 +44,7 @@ function Nav() {
   //local state for menu icon toggle
   const [ navOpen, setNavOpen ] = useState( false );
 
+  //functions to handle nav toggle
   const handleNavOpen = () => {
     setNavOpen( true );
   }
@@ -49,8 +53,10 @@ function Nav() {
     setNavOpen( false );
   }
 
-  //bring in styles for classNames
+  //bring in styling from MUI
   const classes = useStyles();
+  const theme = useTheme(); 
+
   //setup variables for MUI drawer
   const navList = [ {
     text: loginLinkData.text,
@@ -73,20 +79,37 @@ function Nav() {
 
 
   return (
-    <MUIDrawer className={classes.drawer}>
-      <List>
-        {navList.map((item, index) =>{
-          const { text, icon, onClick } = item
-          return(
-          <ListItem button key={text} onClick={onClick}>
-            {icon && <ListItemIcon>{icon}</ListItemIcon>}
-            {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
-            <ListItemText primary={text} />
-          </ListItem>
-          )} 
-        )}
-      </List>
-    </MUIDrawer>
+    <div className="nav">
+      <IconButton
+        color="inherit"
+        aria-label="open-drawer"
+        onClick={handleNavOpen}
+        edge="start"
+      >
+        <MenuIcon />
+      </IconButton>
+      <MUIDrawer 
+        className={classes.drawer}
+        anchor="left"
+        open={navOpen}
+      >
+        <IconButton onClick={handleNavClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon /> }
+        </IconButton>  
+        <List>
+          {navList.map((item, index) =>{
+            const { text, icon, onClick } = item
+            return(
+            <ListItem button key={text} onClick={onClick}>
+              {icon && <ListItemIcon>{icon}</ListItemIcon>}
+              {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
+              <ListItemText primary={text} />
+            </ListItem>
+            )} 
+          )}
+        </List>
+      </MUIDrawer>
+    </div>
     // <div className="nav">
     //   <Link to="/home">
     //     <h2 className="nav-title">Prime Solo Project</h2>

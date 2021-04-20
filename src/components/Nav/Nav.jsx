@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 //mui drawer for making the nav a popoutmenu
 import { 
   Drawer as MUIDrawer, 
@@ -15,47 +15,70 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 const  useStyles = makeStyles({
   drawer: {
-    width: '160px'
+    width: '190px'
   }
 })
 //icons
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import MenuIcon from '@material-ui/icons/Menu';
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  //needed for history.push
+  const history = useHistory();
+  //needed for dispatch
+  const dispatch = useDispatch();
+  //REWRITE THIS W/CONDITIONAL RENDER SO NO NAV SHOWS ON LOGIN
+  let [ loginLinkData, setLoginLinkData ] = useState({
+    path: '/login',
+    text: 'Login / Register',
+  })
+  if(user.id != null) {
+    loginLinkData.path = '/home';
+    loginLinkData.text = 'Home';
+  }
+  //local state for menu icon toggle
+  const [ navOpen, setNavOpen ] = useState( false );
+
+  const handleNavOpen = () => {
+    setNavOpen( true );
+  }
+
+  const handleNavClose = () => {
+    setNavOpen( false );
+  }
+
   //bring in styles for classNames
   const classes = useStyles();
   //setup variables for MUI drawer
   const navList = [ {
-    text: 'Inbox',
-    icon: <InboxIcon />
+    text: loginLinkData.text,
+    icon: <InboxIcon />,
+    onClick: ()=> history.push(loginLinkData.path)
   }, {
-    text: 'Starred'
+    text: 'Create Request',
+    icon: <MailIcon />,
+    onClick: ()=> history.push('/create')
   }, {
-    text: 'Send email',
-    icon: <MailIcon />
+    text: 'About/Profile',
+    icon: <MailIcon />,
+    onClick: ()=> history.push('/about')
   }, {
-    text: 'Drafts'
+    text: 'Logout',
+    icon: <MailIcon />,
+    onClick: ()=> dispatch({ type: 'LOGOUT' })
   } ]
 
-  let loginLinkData = {
-    path: '/login',
-    text: 'Login / Register',
-  };
 
-  if (user.id != null) {
-    loginLinkData.path = '/home';
-    loginLinkData.text = 'Home';
-  }
 
   return (
-    <MUIDrawer open variant="permanent" className={classes.drawer}>
+    <MUIDrawer className={classes.drawer}>
       <List>
         {navList.map((item, index) =>{
-          const { text, icon } = item
+          const { text, icon, onClick } = item
           return(
-          <ListItem button key={text}>
+          <ListItem button key={text} onClick={onClick}>
             {icon && <ListItemIcon>{icon}</ListItemIcon>}
             {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
             <ListItemText primary={text} />

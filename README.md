@@ -27,11 +27,11 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
   [x] watch Youtube vid on MaterialUI "drawers"
   [x] replace Nav element with popout
   [x] hamburger menu icon
-[ ] update register screen - RegisterForm
-  [ ] update user db to account for first and last name
-  [ ] add two inputs for first and last name
-  [ ] add first and last to payload, POST route to make sure it's getting to db
-  [ ] "join" button
+[x] update register screen - RegisterForm
+  [x] update user db to account for first and last name
+  [x] add two inputs for first and last name
+  [x] add first and last to payload, POST route to make sure it's getting to db
+  [x] "join" button
 [ ] Home pt 1
   [ ] build out component
   [ ] should replace landing screen

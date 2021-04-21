@@ -24,6 +24,7 @@ function RegisterForm() {
   }; // end registerUser
 
   ////- YOU HAVE TO COMPLETELY REWORK/STYLE THIS -////
+  // way to get rid of Nav with conditional render?
   return (
     <>
       <br />
@@ -85,7 +86,7 @@ function RegisterForm() {
           </label>
         </div>
         <div>
-          <input className="btn" type="submit" name="submit" value="Register" />
+          <input className="btn" type="submit" name="submit" value="Join" />
         </div>
       </form>
     </>

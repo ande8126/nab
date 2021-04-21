@@ -48,13 +48,11 @@ const Home = () => {
             <br />
             <h3>Your requests:</h3>
             {JSON.stringify( requests )}
-            {displayWelcome()}
             {/* conditionally render: 'make your 1st request'*/}
-            <RequestList />
+            {displayWelcome()}
+            {/* props to RequestList for map */}
+            <RequestList requests={requests} />
             {/* Plus sign icon here, links to CreateRequest */}
-            
-            {/* more stuff from LandingPage DOM - will edit later */}
-            
             <Link to="/create">
                 <button>Create Request</button>
             </Link>

@@ -2,7 +2,7 @@ import React from 'react'
 //import RequestList for props
 import RequestItem from '../RequestItem/RequestItem'
 
-const RequestList = () => {
+const RequestList = ({ requests }) => {
 
     return (
         <div>

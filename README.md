@@ -32,14 +32,14 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
   [x] add two inputs for first and last name
   [x] add first and last to payload, POST route to make sure it's getting to db
   [x] "join" button
-[ ] Home pt 1
-  [ ] build out component
-  [ ] should replace landing screen
-  [ ] prep for GET route (SHOULD THIS HAPPEN ON REQUESTLIST?)
+[x] Home pt 1
+  [x] build out component
+  [x] should replace landing screen
+  [x] prep for GET route (SHOULD THIS HAPPEN ON REQUESTLIST?)
     - useEffect, dispatch and useSelector 
     - saga
     - db setup - 'request' table and '/api/request' router
-  [ ] conditional render for no entries -- "make your first request!"
+  [x] conditional render for no entries -- "make your first request!"
 [ ] CreateRequest pt 1
   [ ] build out component
     - inputs
@@ -68,6 +68,8 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
   [ ] POST route on server side
 [ ] Home pt 2
   [ ] finalize GET route from "request" table to component
+  [ ] Display info to DOM
+  [ ] "Create Request" Icon should be a "fixed" component on bottom
   [ ] setup "card" components in RequestItem
   [ ] Finalize where GET route should go (RequestList or Home?)
   [ ] dispatch for Delete btn

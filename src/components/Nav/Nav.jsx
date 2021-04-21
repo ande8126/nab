@@ -5,12 +5,15 @@ import './Nav.css';
 import {useSelector, useDispatch} from 'react-redux';
 //mui drawer for making the nav a popoutmenu
 import { 
+  AppBar,
   Drawer as MUIDrawer,
   IconButton, 
   ListItem,
   List, 
   ListItemIcon, 
-  ListItemText 
+  ListItemText,
+  Toolbar,
+  Typography 
 } from '@material-ui/core';
 //styling
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -80,17 +83,21 @@ function Nav() {
 
 
   return (
-    <> 
-    <div className="nav">
-      <IconButton
-        color="inherit"
-        aria-label="open-drawer"
-        onClick={handleNavOpen}
-        edge="start"
-      >
-        <MenuIcon />
-      </IconButton>
-      </div>
+    <>
+      <AppBar
+      position="fixed">
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open-drawer"
+            onClick={handleNavOpen}
+            edge="start"
+          >
+            <MenuIcon />
+          </IconButton>
+          Nab
+        </Toolbar>
+      </AppBar> 
       <MUIDrawer 
         className={classes.drawer}
         anchor="left"

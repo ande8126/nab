@@ -23,7 +23,9 @@ function LoginForm() {
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
   }; // end login
-
+////- YOU HAVE TO COMPLETELY RE-WORK/STYLE THIS -////
+//way to get rid of nav?
+//user should start on Login first, not registration screen
   return (
     <form className="formPanel" onSubmit={login}>
       <h2>Login</h2>

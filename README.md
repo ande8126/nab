@@ -23,10 +23,10 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
     - Home screen should replace landing screen
     - Do I want to keep the nav bar as is? New style? -- WILL NEED TO CHANGE FOR MOBILE
     - Setup links and useHistory for Nab's workflow (register/login >>> Home >>> CreateRequest >>> Confirmation >>> Home)
-[ ] Rework Nav
-  [ ] watch Youtube vid on MaterialUI "drawers"
-  [ ] replace Nav element with popout
-  [ ] hamburger menu icon
+[x] Rework Nav
+  [x] watch Youtube vid on MaterialUI "drawers"
+  [x] replace Nav element with popout
+  [x] hamburger menu icon
 [ ] update register screen - RegisterForm
   [ ] update user db to account for first and last name
   [ ] add two inputs for first and last name

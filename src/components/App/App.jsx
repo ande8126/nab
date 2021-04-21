@@ -22,6 +22,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import CreateRequest from '../CreateRequest/CreateRequest';
 import ConfirmRequest from '../ConfirmRequest/ConfirmRequest';
+import Header from '../Header/Header';
 
 //styling
 import './App.css';//default
@@ -136,7 +137,7 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );

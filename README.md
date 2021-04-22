@@ -57,17 +57,17 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
   [x] GET route on server side
 [ ] Confirmation screen
   [x] useSelector for calling tempRequest from Redux
-  [ ] build out component
+  [x] build out component
     - "your request" header
     - text box to show completed request
     - "copy" button
     - "home" button
-  [ ] function for copy button
+  [x] function for copy button
     - npm install useClippy hook
     - import
     - setup
   [ ] function for save button
-    [ ] dispatch for POST call
+    [x] dispatch for POST call
     [ ] saga for POST call to "request" table
     [ ] make request.router.js file
     [ ] POST route on server side

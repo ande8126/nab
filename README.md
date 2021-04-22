@@ -56,6 +56,7 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
   [x] saga for GET call from "letter" table
   [x] GET route on server side
 [ ] Confirmation screen
+  [x] useSelector for calling tempRequest from Redux
   [ ] build out component
     - "your request" header
     - text box to show completed request

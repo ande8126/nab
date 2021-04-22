@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import useClippy from 'use-clippy';
 
 const ConfirmRequest = () => {
     //useSelector to bring in tempRequest object
@@ -20,6 +21,18 @@ const ConfirmRequest = () => {
         setEmailBody( `Dear ${emailObject.recipient}, \n${emailObject.email_body}`)
     }
 
+    //CLIPBOARD SETUP HERE
+    //useClippy tool imported, acts like useState
+    const [ clipboard, setClipboard ] = useClippy();
+    //disable button if text is already copied
+    const isDisabled = clipboard === emailBody;
+    
+    const handleCopy = useCallback(()=>{
+        setClipboard( emailBody )
+    }, [ setClipboard, emailBody ])
+
+
+
     return (
         <div>
             <br />
@@ -30,7 +43,7 @@ const ConfirmRequest = () => {
             <Link to="/create">
                 <button>Back</button>
             </Link>
-            <button>Copy</button>
+            <button disabled = {isDisabled} onClick={handleCopy}>Copy</button>
             <button>Save</button>
             
         </div>

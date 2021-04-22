@@ -10,7 +10,8 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
 
 
 ## To-do
-[ ] Setup
+
+[x] Setup
   [x] watch boilerplate vids
   [x] setup/review components
     - Registration 

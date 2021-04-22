@@ -41,21 +41,20 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
     - saga
     - db setup - 'request' table and '/api/request' router
   [x] conditional render for no entries -- "make your first request!"
-[ ] CreateRequest pt 1
-  [ ] build out component
+[x] CreateRequest pt 1
+  [x] build out component
     - inputs
     - buttons
-  [ ] dispatch for GET - pre-formatted letter text
-  [ ] dispatch for POST - sending finished product to 'requests'
-  [ ] useSelector for letter text
-  [ ] functions to handle inputs
-  [ ] function to handle "state" dropdown
-  [ ] function to link and bring the whole "request" object to "confirmation" screen
-  [ ] back button-- X button in upper right to "close"?
-[ ] CreateRequest pt 2
-  [ ] reducer to handle data back from GET route for letters
-  [ ] saga for GET call from "letter" table
-  [ ] GET route on server side
+  [x] dispatch for GET - pre-formatted letter text
+  [x] useSelector for letter text
+  [x] functions to handle inputs
+  [x] function to handle "state" dropdown
+  [x] function to link and bring the whole "request" object to "confirmation" screen
+  [x] back button-- will become eventually X button in upper right to "close"?
+[x] CreateRequest pt 2
+  [x] reducer to handle data back from GET route for letters
+  [x] saga for GET call from "letter" table
+  [x] GET route on server side
 [ ] Confirmation screen
   [ ] build out component
     - "your request" header
@@ -63,10 +62,14 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
     - "copy" button
     - "home" button
   [ ] function for copy button
-  [ ] function for home button
-  [ ] saga for POST call to "request" table
-  [ ] make request.router.js file
-  [ ] POST route on server side
+    - npm install useClippy hook
+    - import
+    - setup
+  [ ] function for save button
+    [ ] dispatch for POST call
+    [ ] saga for POST call to "request" table
+    [ ] make request.router.js file
+    [ ] POST route on server side
 [ ] Home pt 2
   [ ] finalize GET route from "request" table to component
   [ ] Display info to DOM
@@ -80,12 +83,13 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
   [ ] entries for all 50 states
     - MuckRock API?
     - Writing entries for each state
+  [ ] revamp UI of component (breadcrumbs?)
 [ ] Styling
   [ ] Nav bar - drawers/popout menu
   [ ] Home - "+" icon for linking to CreateRequest
   [ ] RequestItem cards
   [ ] RequestList
-  [ ] CreateRequest - buttons, inputs
+  [ ] CreateRequest - buttons, inputs, 'X' button to close instead of "back button"
   [ ] Confirmation - textbox, buttons
   [ ] Registration screen - inputs/buttons
 

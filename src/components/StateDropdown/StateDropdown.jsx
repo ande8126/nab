@@ -6,6 +6,7 @@ const StateDropdown = ( { getStateLetter }) => {
         <select onChange={getStateLetter}>
             <option value=''>Please select</option>
             <option>Test</option>
+            <option>test</option>
             {/* map state names here from props */}
         </select>
     )

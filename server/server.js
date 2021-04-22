@@ -10,6 +10,8 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const requestsRouter = require('./routes/requests.router');
+//route for bringing formatted letters from db
+const letterRouter = require( './routes/letter.router' );
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -24,8 +26,10 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-//new router to handle requests
+//to handle record requests
 app.use('/api/requests', requestsRouter);
+//to handle formatted letters
+app.use('/api/letter', letterRouter)
 
 // Serve static files
 app.use(express.static('build'));

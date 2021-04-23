@@ -4,16 +4,36 @@ import RequestList from '../RequestList/RequestList'
 import { useHistory, Link } from 'react-router-dom';
 import './Home.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { StoreMallDirectory } from '@material-ui/icons';
+import {
+    AppBar,
+    Fab,
+    IconButton,
+    Toolbar,
+    Typography,
+} from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 
-////- STYLING STUFF FOR LATER MAYBE -////
-//import { makeStyles } from '@material-ui/core/styles';
-// const  useStyles = makeStyles(theme=>({
-//     offset: theme.mixins.toolbar,
-// }))
+//- STYLING STUFF -//
+import { makeStyles } from '@material-ui/core/styles';
+const  useStyles = makeStyles(theme=>({
+    appBar: {
+        top: 'auto',
+        bottom: 0,
+    },
+    fabButton: {
+        position: 'absolute',
+        zIndex: 1,
+        top: -30,
+        left: 0,
+        right: 0,
+        margin: '0 auto',
+    },
+}))
 
 
 const Home = () => {
+    //needed for MaterialUI classes
+    const classes = useStyles();
     //needed for dispatch
     const dispatch = useDispatch();
     //dispatch for GET call on load for all requests
@@ -28,11 +48,12 @@ const Home = () => {
     const [ areRequests, setAreRequests ] = useState( false );
     //conditional
     const displayWelcome = () =>{
-        if ( requests === undefined ){
+        if ( requests[0] === undefined ){
             return(
                 // way to style this w/bouncing arrow?
                 <p>Make your first request!</p>
             )
+        
         }
     }   
 
@@ -47,15 +68,22 @@ const Home = () => {
             <br />
             <br />
             <h3>Your requests:</h3>
-            {JSON.stringify( requests )}
             {/* conditionally render: 'make your 1st request'*/}
             {displayWelcome()}
             {/* props to RequestList for map */}
             <RequestList requests={requests} />
             {/* Plus sign icon here, links to CreateRequest */}
-            <Link to="/create">
+            <AppBar position="fixed" color="primary" className={classes.appBar}>
+                <Toolbar>
+                    <Fab color="secondary" aria-label="add" className={classes.fabButton}>
+                        <AddIcon />
+                    </Fab>
+                    <div className={classes.grow} />
+                </Toolbar>
+            </AppBar>
+            {/* <Link to="/create">
                 <button>Create Request</button>
-            </Link>
+            </Link> */}
         </div>
     )
 }

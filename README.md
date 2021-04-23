@@ -55,7 +55,7 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
   [x] reducer to handle data back from GET route for letters
   [x] saga for GET call from "letter" table
   [x] GET route on server side
-[ ] Confirmation screen
+[x] Confirmation screen
   [x] useSelector for calling tempRequest from Redux
   [x] build out component
     - "your request" header
@@ -66,13 +66,13 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
     - npm install useClippy hook
     - import
     - setup
-  [ ] function for save button
+  [x] function for save button
     [x] dispatch for POST call
-    [ ] saga for POST call to "request" table
-    [ ] make request.router.js file
-    [ ] POST route on server side
+    [x] saga for POST call to "request" table
+    [x] make request.router.js file
+    [x] POST route on server side
 [ ] Home pt 2
-  [ ] finalize GET route from "request" table to component
+  [ ] finalize GET route from "request" table to component -- WHY AREN'T NEW ENTRIES SHOWING IN STRINGIFY?
   [ ] Display info to DOM
   [ ] "Create Request" Icon should be a "fixed" component on bottom
   [ ] setup "card" components in RequestItem

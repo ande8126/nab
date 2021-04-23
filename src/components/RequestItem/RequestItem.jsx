@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 /**  MATERIAL UI
  * npm install
  * experiment with theme (make theme.js, ThemeProvider in index.js)
@@ -8,38 +9,41 @@ import {
     Button, 
     Switch, 
     FormControlLabel, 
-    FormGroup, 
+    FormGroup,
+    IconButton, 
     Paper,
     Typography } from '@material-ui/core';
 //customize MaterialUI settings with MakeStyles
 import { makeStyles } from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors';
+//styles go here:
+const useStyles = makeStyles({
+    deleteButtonStyle: {
+        fontStyle: 'oblique'
+    }
+})
 //grid
 import Grid from '@material-ui/core/Grid'
+//icons
+import CloseIcon from '@material-ui/icons/Close';
 
 
 const RequestItem = ( {request} ) => {
+    //format date on page load 
     useEffect( ()=>{
         makeDate( request.date )
     }, [] )
-
+    //needed for MaterialUI classes
+    const classes = useStyles();
+    //needed for dispatch
+    const dispatch = useDispatch();
     ////- TO DECIDE: useParams for each RequestItem? -////
     //toggle for switch
-    const [state, setState] = React.useState({
-        checkedA: false,
-        checkedB: true,
-    });
+    const [state, setState] = useState({ checkedA: false });
    //function for switch -- still need to learn how to toggle on DOM?? 
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
     };
 
-    //makeStyles changes here:
-    const useStyles = makeStyles({
-        deleteButtonStyle: {
-            fontStyle: 'oblique'
-        }
-})
     //local state for date
     const [ date, setDate ] = useState('')
     //function to make date more readable
@@ -53,19 +57,30 @@ const RequestItem = ( {request} ) => {
             } else {
                 tempDate += requestDate[i];
             }
-            
-            // else if ( requestDate[i] === 'T' ) {
-            //     break;
-            // }
         }
+    }//end makeDate
+
+    //function to delete a request
+    const deleteRequest = ( id ) =>{
+        console.log( 'in deleteRequest', id );
+        dispatch( { type: 'DELETE_REQUEST', payload: id } );
+    }
+    //function to toggle PUT request
+    const haveRequest = ( id ) =>{
+        console.log( 'in haveRequest', id );
+        dispatch( { type: 'HAVE_REQUEST', payload: id } )
     }
 
-    const classes = useStyles();
     return (
         <div>
             {/* {JSON.stringify( date )} */}
             <Paper elevation="4">
             <Grid container xs={12}>
+                <Grid item xs={1}>
+                    <IconButton onClick={()=>deleteRequest( request.id )}>
+                        <CloseIcon />
+                    </IconButton>
+                </Grid>
                 <Grid item xs={12}>
                     <Typography color="primary" variant="h5">{request.title}</Typography>
                 </Grid>
@@ -87,12 +102,13 @@ const RequestItem = ( {request} ) => {
                 <Grid item xs={12}>
                     <FormGroup row>
                         <FormControlLabel
-                        control={<Switch checked={state.checkedA} onChange={handleChange} />}
+                        control={<Switch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
                         label="Response"
                         />
                     </FormGroup>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={8} />
+                <Grid item xs={4}>
                     <Button 
                     className={classes.deleteButtonStyle}
                     variant="contained"

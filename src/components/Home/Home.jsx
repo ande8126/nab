@@ -28,6 +28,9 @@ const  useStyles = makeStyles(theme=>({
         right: 0,
         margin: '0 auto',
     },
+    grow: {
+        flexGrow: 1,
+    },
 }))
 
 
@@ -36,6 +39,8 @@ const Home = () => {
     const classes = useStyles();
     //needed for dispatch
     const dispatch = useDispatch();
+    //needed for history
+    const history = useHistory();
     //dispatch for GET call on load for all requests
     useEffect(()=>{
         dispatch( { type: 'FETCH_REQUESTS' } );
@@ -55,7 +60,12 @@ const Home = () => {
             )
         
         }
-    }   
+    }
+    
+    //click handler for adding new request
+    const addRequest = () =>{
+        history.push( '/create' )
+    }
 
     //ALSO: Maybe 'bouncing' arrow icon pointing to plus sign icon?
     // const classes = useStyles();
@@ -75,7 +85,7 @@ const Home = () => {
             {/* Plus sign icon here, links to CreateRequest */}
             <AppBar position="fixed" color="primary" className={classes.appBar}>
                 <Toolbar>
-                    <Fab color="secondary" aria-label="add" className={classes.fabButton}>
+                    <Fab color="secondary" aria-label="add" className={classes.fabButton} onClick={addRequest}>
                         <AddIcon />
                     </Fab>
                     <div className={classes.grow} />

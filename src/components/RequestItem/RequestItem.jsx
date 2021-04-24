@@ -64,7 +64,7 @@ const RequestItem = ( {request} ) => {
     //function for switch -- still need to learn how to toggle on DOM?? 
     const handleResponse = ( id ) => {
         setToggle({ checked: true });
-        dispatch( { type: 'HAVE_REQUEST', payload: id } )
+        dispatch( { type: 'HAVE_RESPONSE', payload: id } )
         };
     //function to toggle PUT request
     // const haveRequest = ( id ) =>{

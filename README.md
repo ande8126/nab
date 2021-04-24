@@ -92,6 +92,7 @@ Nab’s Home screen shows a record of the user’s past open records request in 
   [x] dispatch for Delete btn
   [ ] function to handle Response toggle (DELETE)
   [ ] dispatch for Response (PUT)
+  [ ] SocketIO for instant updating?
 [ ] CreateRequest pt 3
   [ ] entries for all 50 states
     - MuckRock API?

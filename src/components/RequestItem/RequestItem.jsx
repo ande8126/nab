@@ -37,18 +37,12 @@ const RequestItem = ( {request} ) => {
     //needed for dispatch
     const dispatch = useDispatch();
     ////- TO DECIDE: useParams for each RequestItem? -////
-    //toggle for switch
-    const [state, setState] = useState({ checkedA: false });
-   //function for switch -- still need to learn how to toggle on DOM?? 
-    const handleChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
-    };
 
     //local state for date
     const [ date, setDate ] = useState('')
     //function to make date more readable
     const makeDate = ( requestDate ) =>{
-        let tempDate = ''
+        let tempDate = '';
         for ( let i=0; i<requestDate.length; i++ ){
             console.log( 'making date:', requestDate[i] );
             if ( requestDate[i] === 'T' ){
@@ -65,17 +59,24 @@ const RequestItem = ( {request} ) => {
         console.log( 'in deleteRequest', id );
         dispatch( { type: 'DELETE_REQUEST', payload: id } );
     }
-    //function to toggle PUT request
-    const haveRequest = ( id ) =>{
-        console.log( 'in haveRequest', id );
+    //toggle for switch
+    const [toggle, setToggle] = useState({ checked: false });
+    //function for switch -- still need to learn how to toggle on DOM?? 
+    const handleResponse = ( id ) => {
+        setToggle({ checked: true });
         dispatch( { type: 'HAVE_REQUEST', payload: id } )
-    }
+        };
+    //function to toggle PUT request
+    // const haveRequest = ( id ) =>{
+    //     console.log( 'in haveRequest', id );
+    //     dispatch( { type: 'HAVE_REQUEST', payload: id } )
+    // }
 
     return (
         <div>
             {/* {JSON.stringify( date )} */}
-            <Paper elevation="4">
-            <Grid container xs={12}>
+            <Paper elevation={4}>
+            <Grid container>
                 <Grid item xs={1}>
                     <IconButton onClick={()=>deleteRequest( request.id )}>
                         <CloseIcon />
@@ -102,7 +103,7 @@ const RequestItem = ( {request} ) => {
                 <Grid item xs={12}>
                     <FormGroup row>
                         <FormControlLabel
-                        control={<Switch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
+                        control={<Switch checked={toggle.checked} onChange={()=>handleResponse( request.id )} name="checkedA" />}
                         label="Response"
                         />
                     </FormGroup>

@@ -41,9 +41,13 @@ const Home = () => {
     const dispatch = useDispatch();
     //needed for history
     const history = useHistory();
+    //function for GET dispatch (needs to be props to ReqList and ReqItem)
+    const fetchRequests = () =>{
+        dispatch( { type: 'FETCH_REQUESTS' } );
+    }
     //dispatch for GET call on load for all requests
     useEffect(()=>{
-        dispatch( { type: 'FETCH_REQUESTS' } );
+        fetchRequests();
     }, [] )
 
     //conditionally render phrase like "Make your first request"
@@ -81,7 +85,7 @@ const Home = () => {
             {/* conditionally render: 'make your 1st request'*/}
             {displayWelcome()}
             {/* props to RequestList for map */}
-            <RequestList requests={requests} />
+            <RequestList requests={requests} fetchRequests={fetchRequests} />
             {/* Plus sign icon here, links to CreateRequest */}
             <AppBar position="fixed" color="primary" className={classes.appBar}>
                 <Toolbar>

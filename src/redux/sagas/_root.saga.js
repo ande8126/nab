@@ -6,6 +6,7 @@ import requestsSaga from './requests.saga';
 import letterSaga from './letter.saga';
 import sendRequestSaga from './sendrequest.saga';
 import responseSaga from './response.saga';
+import deleteSaga from './delete.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     letterSaga(),
     sendRequestSaga(),
     responseSaga(),
+    deleteSaga(),
   ]);
 }

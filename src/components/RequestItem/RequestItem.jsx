@@ -27,7 +27,7 @@ import Grid from '@material-ui/core/Grid'
 import CloseIcon from '@material-ui/icons/Close';
 
 
-const RequestItem = ( {request} ) => {
+const RequestItem = ( {request, fetchRequests} ) => {
     //format date on page load 
     useEffect( ()=>{
         makeDate( request.date )
@@ -58,19 +58,20 @@ const RequestItem = ( {request} ) => {
     const deleteRequest = ( id ) =>{
         console.log( 'in deleteRequest', id );
         dispatch( { type: 'DELETE_REQUEST', payload: id } );
+        //this triggers new GET for all requests but it's janky??
+        fetchRequests();
     }
+
+    ////- PUT ROUTE NEEDS CLEANING UP -////
+    ////- SAME FOR DELETE - HOW DO I REFRESH PAGE AFTER PUT/DELETE? -////
     //toggle for switch
     const [toggle, setToggle] = useState({ checked: false });
     //function for switch -- still need to learn how to toggle on DOM?? 
     const handleResponse = ( id ) => {
-        setToggle({ checked: true });
         dispatch( { type: 'HAVE_RESPONSE', payload: id } )
+        //this triggers new GET for all requests but it's janky??
+        fetchRequests();
         };
-    //function to toggle PUT request
-    // const haveRequest = ( id ) =>{
-    //     console.log( 'in haveRequest', id );
-    //     dispatch( { type: 'HAVE_REQUEST', payload: id } )
-    // }
 
     return (
         <div>
@@ -103,7 +104,7 @@ const RequestItem = ( {request} ) => {
                 <Grid item xs={12}>
                     <FormGroup row>
                         <FormControlLabel
-                        control={<Switch checked={toggle.checked} onChange={()=>handleResponse( request.id )} name="checkedA" />}
+                        control={<Switch checked={request.response} onChange={()=>handleResponse( request.id )} name="checkedA" />}
                         label="Response"
                         />
                     </FormGroup>

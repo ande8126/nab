@@ -4,7 +4,7 @@ const router = express.Router();
 
 //GET ROUTER TO BRING IN ALL EXISTING RECORDS REQUESTS
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "requests"`;
+  const queryText = `SELECT * FROM "requests" ORDER BY "id" DESC`;
   pool.query( queryText ).then( ( results )=>{
     res.send( results.rows );
   }).catch( ( error )=>{

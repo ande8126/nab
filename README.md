@@ -90,8 +90,8 @@ Nab’s Home screen shows a record of the user’s past open records request in 
   [x] setup "card" components in RequestItem
   [x] Finalize where GET route should go (RequestList or Home?)
   [x] dispatch for Delete btn
-  [ ] function to handle Response toggle (DELETE)
-  [ ] dispatch for Response (PUT)
+  [x] function to handle Response toggle (DELETE)
+  [x] dispatch for Response (PUT)
   [ ] SocketIO for instant updating?
 [ ] CreateRequest pt 3
   [ ] entries for all 50 states

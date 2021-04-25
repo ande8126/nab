@@ -27,7 +27,7 @@ import Grid from '@material-ui/core/Grid'
 import CloseIcon from '@material-ui/icons/Close';
 
 
-const RequestItem = ( {request, fetchRequests} ) => {
+const RequestItem = ( {request, triggerReload} ) => {
     //format date on page load 
     useEffect( ()=>{
         makeDate( request.date )
@@ -59,18 +59,16 @@ const RequestItem = ( {request, fetchRequests} ) => {
         console.log( 'in deleteRequest', id );
         dispatch( { type: 'DELETE_REQUEST', payload: id } );
         //this triggers new GET for all requests but it's janky??
-        fetchRequests();
+        triggerReload();
     }
 
     ////- PUT ROUTE NEEDS CLEANING UP -////
     ////- SAME FOR DELETE - HOW DO I REFRESH PAGE AFTER PUT/DELETE? -////
-    //toggle for switch
-    const [toggle, setToggle] = useState({ checked: false });
     //function for switch -- still need to learn how to toggle on DOM?? 
     const handleResponse = ( id ) => {
         dispatch( { type: 'HAVE_RESPONSE', payload: id } )
         //this triggers new GET for all requests but it's janky??
-        fetchRequests();
+        triggerReload();
         };
 
     return (

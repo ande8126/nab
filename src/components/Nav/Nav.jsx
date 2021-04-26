@@ -95,7 +95,7 @@ function Nav() {
           >
             <MenuIcon />
           </IconButton>
-          Nab
+          <img className="logo" src="https://i.imgur.com/1FFPq48.png" />
         </Toolbar>
       </AppBar> 
       <MUIDrawer 

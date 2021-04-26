@@ -5,6 +5,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* deleteRequest( action ) {
   try {
     yield axios.delete( '/api/requests/' + action.payload );
+    yield put({ type: 'FETCH_REQUESTS' } );
   } catch (error) {
     console.log('Request DELETE failed', error);
   }

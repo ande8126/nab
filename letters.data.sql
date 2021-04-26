@@ -22,6 +22,18 @@ If you deny any or all of this request, please cite each specific exemption you 
 Thank you for considering my request.'
 );
 
+INSERT INTO "letters" ("state", "body") VALUES ( 'Arizona', 
+'Under the Arizona Public Records Law § 39.101 et seq., I am requesting an opportunity to inspect or obtain copies of the following public records:
+
+I request a waiver of all fees for this request since the disclosure of the information will contribute significantly to public understanding of the operations or activities of the government, making the disclosure a matter of public interest. This request is not being made for commercial purposes.
+
+I would request a response to this request within 10 business days.  If you expect a significant delay in responding to or in fulfilling this request, please contact me with information about when I might expect copies or the ability to inspect the requested records.
+
+If you deny any or all of this request, please cite each specific exemption under the relevant state statute.
+
+Thank you for considering my request.'
+);
+
 INSERT INTO "letters" ("state", "body") VALUES ( 'Minnesota', 
 'Under the Minnesota Data Practices Act § 13.01 et seq., I am requesting an opportunity to inspect or obtain copies of the following public records:
 

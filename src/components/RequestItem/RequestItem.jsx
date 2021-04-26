@@ -59,7 +59,7 @@ const RequestItem = ( {request, triggerReload} ) => {
         console.log( 'in deleteRequest', id );
         dispatch( { type: 'DELETE_REQUEST', payload: id } );
         //this triggers new GET for all requests but it's janky??
-        triggerReload();
+        dispatch( { type: 'FETCH_REQUESTS' } );
     }
 
     ////- PUT ROUTE NEEDS CLEANING UP -////
@@ -68,7 +68,7 @@ const RequestItem = ( {request, triggerReload} ) => {
     const handleResponse = ( id ) => {
         dispatch( { type: 'HAVE_RESPONSE', payload: id } )
         //this triggers new GET for all requests but it's janky??
-        triggerReload();
+        dispatch( { type: 'FETCH_REQUESTS' } );
         };
 
     return (

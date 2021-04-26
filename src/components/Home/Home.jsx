@@ -50,11 +50,9 @@ const Home = () => {
         dispatch( { type: 'FETCH_REQUESTS' } );
     }, [] )
 
-    //conditionally render phrase like "Make your first request"
     //start by bringing down requests with useSelector
-    const requests = useSelector( store => store.requests );
-    //set local state for toggling conditional render
-    const [ areRequests, setAreRequests ] = useState( false );
+    const requests = useSelector( (store) => {
+        return store.requests } );
     //conditional
     const displayWelcome = () =>{
         if ( requests[0] === undefined ){
@@ -75,7 +73,6 @@ const Home = () => {
     // const classes = useStyles();
     console.log('requests:', requests);
     return (
-
 
         <div className="home-section">
             <br />

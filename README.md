@@ -1,5 +1,6 @@
 
 # Nab
+![logo](public/nav_logo_main.png)
 
 ## Description
 
@@ -98,13 +99,21 @@ Nab’s Home screen shows a record of the user’s past open records request in 
     - MuckRock API?
     - Writing entries for each state
   [ ] revamp UI of component (breadcrumbs?)
+[ ] Bugs
+  [ ] Text not resetting on "letters" textbox (dropdown handler? POST route?)
+  [ ] Connect StateDropdown to db (Saga/GET to "letters")
+  [ ] Add "user_id" to POST route (so results can be specific)
+  [ ] Add "user_id" to initial GET route (so results are user specific)
+  [ ] figure out theme "mixins" so MUI elements dont cover each other
 [ ] Styling
-  [ ] Nav bar - drawers/popout menu
-  [ ] Home - "+" icon for linking to CreateRequest
+  [x] Nav bar - drawers/popout menu
+  [x] Home - "+" icon for linking to CreateRequest
   [ ] RequestItem cards
-  [ ] RequestList
+  [x] RequestList
   [ ] CreateRequest - buttons, inputs, 'X' button to close instead of "back button"
   [ ] Confirmation - textbox, buttons
   [ ] Registration screen - inputs/buttons
+  [ ] Research MUI 'Box' elements
+  [ ] Make logo for Nab
 
 [ ] Stretch goals...

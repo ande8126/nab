@@ -1,11 +1,18 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
+const encryptLib = require('../modules/encryption');
+const userStrategy = require('../strategies/user.strategy');
 
 //GET ROUTER TO BRING IN ALL EXISTING RECORDS REQUESTS
-router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "requests" ORDER BY "id" DESC`;
-  pool.query( queryText ).then( ( results )=>{
+router.get('/', rejectUnauthenticated, (req, res) => {
+  console.log( 'req.user', req.user );
+  let userId = req.user.id
+  const queryText = `SELECT * FROM "requests" WHERE "user_id" = $1 ORDER BY "id" DESC`;
+  pool.query( queryText, [ userId ]).then( ( results )=>{
     res.send( results.rows );
   }).catch( ( error )=>{
     console.log( 'error in requests GET', error);
@@ -20,9 +27,10 @@ router.post('/', (req, res) => {
   let title = req.body.title;
   let recipient = req.body.recipient;
   let email_body = req.body.email_body;
+  let user_id = Number(req.body.user_id)
   console.log( 'in requests POST:', title, recipient, email_body );
-  queryText = `INSERT INTO "requests" ( "title", "recipient", "email_body") VALUES ( $1, $2, $3 );`;
-  pool.query( queryText, [ title, recipient, email_body ] ).then( ( results )=>{
+  queryText = `INSERT INTO "requests" ( "title", "recipient", "email_body", "user_id" ) VALUES ( $1, $2, $3, $4 );`;
+  pool.query( queryText, [ title, recipient, email_body, user_id ] ).then( ( results )=>{
     res.sendStatus( 201 );
   }).catch( ( error )=>{
     console.log( 'error in requests POST', error );

@@ -6,7 +6,8 @@ function* fetchLetter( action ) {
     try {
         const response = yield axios.get('/api/letter', { params: { state: action.payload } });
         //target string with letter text
-        yield put({ type: 'SET_LETTER', payload: response.data[0] });
+        yield put({ type: 'SET_LETTER', payload: response.data[0] })
+        yield put({ type: 'SET_LETTER', payload: '' });
     } catch (error) {
     console.log('Letter get request failed', error);
     }

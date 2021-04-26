@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import StateDropdown from '../StateDropdown/StateDropdown'
@@ -11,13 +11,14 @@ const CreateRequest = () => {
     const history = useHistory();
     //local state for letter object
     const [ tempRequest, setTempRequest ] = useState({});
-    //const [ recordDetails, setRecordDetails ] = useState('')
-    ////- SHOULD THIS AND TEXTBOX GO IN A LATER SCREEN?(BREADCRUMBS) -////
-    //local state for textbox
-    //const [ text, setText ] = useState('')   
-
+    //bring down user to use user.id as foreign key
+    const user = useSelector((store) => store.user)
+    //set user_id on load
+    useEffect( ()=>{
+        //set user_id foreign key
+        setTempRequest( {...tempRequest, user_id: user.id } );
+    }, [] )
     const handleTitle = ( event ) =>{
-        console.log( 'in handleTitle:', event.target.value );
         setTempRequest( { ...tempRequest, title: event.target.value })
     }
 
@@ -35,10 +36,12 @@ const CreateRequest = () => {
     const starterText = useSelector( ( store )=>{
         return store.letter;
     })
+    //const [ emailBody, setEmailBody ] = useState( '' )
 
     //function to handle textbox
     const handleText = ( event ) =>{
         console.log( 'in handleText', event.target.value );
+        //setEmailBody( starterText.body );
         setTempRequest( {...tempRequest, email_body: event.target.value } );
     }
 
@@ -52,7 +55,6 @@ const CreateRequest = () => {
     //make object and bring over to confirmation page
     const createLetter = ( object ) =>{
         console.log( 'in createLetter with:', object );
-        //will have to set foreign keys here 
         ////- think I need "breadcrumbs" approach tho -////
         //for now, send object to redux
         dispatch( {type: 'SET_TEMP_REQUEST', payload: object } );

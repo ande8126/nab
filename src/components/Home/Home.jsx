@@ -47,13 +47,16 @@ const Home = () => {
     }
     //dispatch for GET call on load for all requests
     useEffect(()=>{
-        dispatch( { type: 'FETCH_REQUESTS' } );
+        dispatch( { type: 'FETCH_REQUESTS' } ); //this will need to include user_id as param
     }, [] )
 
     //start by bringing down requests with useSelector
     const requests = useSelector( (store) => {
         return store.requests } );
-    //conditional
+    //then get user
+    const user = useSelector((store) => store.user) 
+
+    //conditional in case user hasn't made requests yet
     const displayWelcome = () =>{
         if ( requests[0] === undefined ){
             return(
@@ -72,6 +75,7 @@ const Home = () => {
     //ALSO: Maybe 'bouncing' arrow icon pointing to plus sign icon?
     // const classes = useStyles();
     console.log('requests:', requests);
+    console.log('user:', user);
     return (
 
         <div className="home-section">

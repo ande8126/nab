@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import clsx from 'clsx';
 /**  MATERIAL UI
  * npm install
  * experiment with theme (make theme.js, ThemeProvider in index.js)
@@ -7,24 +8,40 @@ import { useDispatch } from 'react-redux';
 */
 import { 
     Button, 
+    Card,
+    CardActions,
+    CardContent,
+    CardHeader,
+    Collapse,
     Switch, 
     FormControlLabel, 
     FormGroup,
     IconButton, 
-    Paper,
     Typography } from '@material-ui/core';
 //customize MaterialUI settings with MakeStyles
 import { makeStyles } from '@material-ui/core/styles';
 //styles go here:
-const useStyles = makeStyles({
-    deleteButtonStyle: {
-        fontStyle: 'oblique'
-    }
-})
+const useStyles = makeStyles( (theme) => ({
+    root: {
+        width: '100%',
+    },
+    expand: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+            duration: theme.transitions.duration.shortest,
+        }),
+    },
+    expandOpen: {
+        transform: 'rotate(180deg)',
+    },
+}));
 //grid
 import Grid from '@material-ui/core/Grid'
 //icons
 import CloseIcon from '@material-ui/icons/Close';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
 const RequestItem = ( {request, triggerReload} ) => {
@@ -36,8 +53,6 @@ const RequestItem = ( {request, triggerReload} ) => {
     const classes = useStyles();
     //needed for dispatch
     const dispatch = useDispatch();
-    ////- TO DECIDE: useParams for each RequestItem? -////
-
     //local state for date
     const [ date, setDate ] = useState('')
     //function to make date more readable
@@ -61,25 +76,65 @@ const RequestItem = ( {request, triggerReload} ) => {
         //this triggers new GET for all requests but it's janky??
         dispatch( { type: 'FETCH_REQUESTS' } );
     }
-
-    ////- PUT ROUTE NEEDS CLEANING UP -////
-    ////- SAME FOR DELETE - HOW DO I REFRESH PAGE AFTER PUT/DELETE? -////
-    //function for switch -- still need to learn how to toggle on DOM?? 
+    //function to handle response (PUT)
     const handleResponse = ( id ) => {
         dispatch( { type: 'HAVE_RESPONSE', payload: id } )
         //this triggers new GET for all requests but it's janky??
         dispatch( { type: 'FETCH_REQUESTS' } );
-        };
+    };
+
+    //local state to expand email
+    const [ expanded, setExpanded ] = useState( false );
+    //handle expand click
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
 
     return (
-        <div>
+        <Card className={classes.root}>
             {/* {JSON.stringify( date )} */}
-            <Paper elevation={4}>
-            <Grid container>
+            <CardHeader 
+            action={
+            <IconButton onClick={()=>deleteRequest( request.id )}>
+                <CloseIcon />
+            </IconButton>
+            }
+            title={request.title}
+            />
+            <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    Sent: <span>{date}</span>
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <FormGroup row>
+                    <FormControlLabel
+                    control={<Switch checked={request.response} onChange={()=>handleResponse( request.id )} name="checkedA" />}
+                    label="Response"
+                    />
+                </FormGroup>
+                <IconButton
+                    className={clsx(classes.expand, {
+                        [classes.expandOpen]: expanded,
+                    })}
+                    onClick={handleExpandClick}
+                    aria-expanded={expanded}
+                    aria-label="show more"
+                    >
+                    <ExpandMoreIcon />
+                </IconButton>
+            </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                    <Typography paragraph>Email:</Typography>
+                    <Typography>
+                        {request.email_body}
+                    </Typography>
+                </CardContent>
+            </Collapse>
+            {/* <Grid container>
                 <Grid item xs={1}>
-                    <IconButton onClick={()=>deleteRequest( request.id )}>
-                        <CloseIcon />
-                    </IconButton>
+
                 </Grid>
                 <Grid item xs={12}>
                     <Typography color="primary" variant="h5">{request.title}</Typography>
@@ -107,18 +162,9 @@ const RequestItem = ( {request, triggerReload} ) => {
                         />
                     </FormGroup>
                 </Grid>
-                <Grid item xs={8} />
-                <Grid item xs={4}>
-                    <Button 
-                    className={classes.deleteButtonStyle}
-                    variant="contained"
-                    color="secondary">
-                        Delete
-                    </Button>
-                </Grid>
             </Grid>
-            </Paper>
-        </div>
+            </Paper> */}
+        </Card>
     )
 }
 

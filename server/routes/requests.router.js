@@ -11,13 +11,25 @@ const userStrategy = require('../strategies/user.strategy');
 router.get('/', rejectUnauthenticated, (req, res) => {
   console.log( 'req.user', req.user );
   let userId = req.user.id
-  const queryText = `SELECT * FROM "requests" WHERE "user_id" = $1 ORDER BY "id" DESC`;
-  pool.query( queryText, [ userId ]).then( ( results )=>{
-    res.send( results.rows );
-  }).catch( ( error )=>{
-    console.log( 'error in requests GET', error);
-    res.sendStatus( 500 );
-  })
+  //admin permissions
+  if( userId === 2 ){
+    let queryText = `SELECT * FROM "requests" ORDER BY "id" DESC;`;
+    pool.query( queryText ).then( ( results )=>{
+      res.send( results.rows );
+    }).catch( ( error )=>{
+      console.log( 'error in requests GET', error);
+      res.sendStatus( 500 );
+    })
+  }
+  else{
+    let queryText = `SELECT * FROM "requests" WHERE "user_id" = $1 ORDER BY "id" DESC;`;
+    pool.query( queryText, [ userId ]).then( ( results )=>{
+      res.send( results.rows );
+    }).catch( ( error )=>{
+      console.log( 'error in requests GET', error);
+      res.sendStatus( 500 );
+    })
+  }
 });
 
 //POST ROUTE TO SEND NEW REQUEST TO DB

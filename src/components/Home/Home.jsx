@@ -54,7 +54,7 @@ const Home = () => {
     const requests = useSelector( (store) => {
         return store.requests } );
     //then get user
-    const user = useSelector((store) => store.user) 
+    //const user = useSelector((store) => store.user) 
 
     //conditional in case user hasn't made requests yet
     const displayWelcome = () =>{
@@ -75,7 +75,6 @@ const Home = () => {
     //ALSO: Maybe 'bouncing' arrow icon pointing to plus sign icon?
     // const classes = useStyles();
     console.log('requests:', requests);
-    console.log('user:', user);
     return (
 
         <div className="home-section">

@@ -17,7 +17,7 @@ const CreateRequest = () => {
     useEffect( ()=>{
         //set user_id foreign key
         setTempRequest( {...tempRequest, user_id: user.id } );
-    }, [] )
+    }, [])
     const handleTitle = ( event ) =>{
         setTempRequest( { ...tempRequest, title: event.target.value })
     }

@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import StateDropdown from '../StateDropdown/StateDropdown'
+import { Box, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+//styles here
+const useStyles = makeStyles(theme=>({
+    createRoot: {
+        flexDirection: "column",
+    },
+}))
 
 
 const CreateRequest = () => {
@@ -9,6 +17,8 @@ const CreateRequest = () => {
     const dispatch = useDispatch();
     //needed for history
     const history = useHistory();
+    //needed for MUI styles
+    const classes = useStyles()
     //local state for letter object
     const [ tempRequest, setTempRequest ] = useState({});
     //bring down user to use user.id as foreign key
@@ -62,13 +72,8 @@ const CreateRequest = () => {
         history.push( '/confirm' )
     }
 
-
-
-
     return (
-        <div>
-            <br />
-            <br />
+        <Box>
             <h2>Build your request...</h2>
             {/* <select>
                 <option value=''>Please select</option>
@@ -76,16 +81,24 @@ const CreateRequest = () => {
             </select> */}
             {/* Props GET call to StateDropdown: */}
             <StateDropdown getStateLetter={getStateLetter} />
-            <input type="text" placeholder="title" onChange={handleTitle} />
-            <input type="text" placeholder="recipient" onChange={handleRecipient} />
+            <br />
+            <TextField type="text" placeholder="title" onChange={handleTitle} />
+            <br />
+            <TextField type="text" placeholder="recipient" onChange={handleRecipient} />
             {/* <input type="text" placeholder="records here... be specific" onChange={handleRecords} /> */}
 
-            <p><textarea cols="20" rows="6" onChange={handleText} defaultValue={starterText.body} /></p>
+            <p><TextField 
+                multiline
+                rows={7}
+                cols={30}
+                onChange={handleText} 
+                defaultValue={starterText.body} 
+                /></p>
             <Link to="/home">
                 <button>Back</button>
             </Link>
             <button onClick={()=>createLetter( tempRequest )}>Confirm</button>
-        </div>
+        </Box>
     )
 }
 

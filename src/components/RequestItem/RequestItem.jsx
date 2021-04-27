@@ -27,6 +27,7 @@ const useStyles = makeStyles( (theme) => ({
     },
     header: {
         borderBottom: '4px solid #fcecae',
+        backgroundColor: '#fffef2'
     },
     recordsSynopsis: {
         paddingBottom: '20px'

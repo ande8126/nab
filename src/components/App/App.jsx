@@ -29,11 +29,16 @@ import './App.css';//default
 import { makeStyles } from '@material-ui/core/styles';
 import { FormHelperText } from '@material-ui/core';
 //useStyles to make display flex with nav bar
-const useStyles = makeStyles({
+const useStyles = makeStyles( (theme)=>({
   container: {
-    display: 'flex'
-  }
-})
+    //display: 'flex'
+  },
+  nav: {
+    padding: '0 0',
+    ...theme.mixins.toolbar
+  },
+  navBarSpacer: theme.mixins.toolbar
+}))
 
 function App() {
   const dispatch = useDispatch();
@@ -49,7 +54,8 @@ function App() {
   return (
     <Router>
       <div className={classes.container}>
-        <Nav />
+        <Nav className={classes.nav}/>
+        <div className={classes.navBarSpacer} />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/landing" />

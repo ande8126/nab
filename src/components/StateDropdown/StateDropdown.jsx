@@ -1,4 +1,10 @@
 import React from 'react';
+import { 
+    FormHelperText,
+    FormControl,
+    InputLabel,
+    Select, 
+    NativeSelect } from '@material-ui/core/';
 
 const StateDropdown = ( { getStateLetter }) => {
     //bring in props
@@ -6,17 +12,20 @@ const StateDropdown = ( { getStateLetter }) => {
 
 
     return (
-        <select onChange={getStateLetter}>
-            <option value=''>Please select</option>
-            <option>test</option>
-            <option>test2</option>
-            <option>Florida</option>
-            <option>Minnesota</option>
-            <option>South Dakota</option>
-            <option>Wisconsin</option>
+        <FormControl>
+            <InputLabel>State</InputLabel>
+            <Select onChange={getStateLetter}>
+                <option value='' />
+                <option>test</option>
+                <option>test2</option>
+                <option value='Florida'>Florida</option>
+                <option value='Minnesota'>Minnesota</option>
+                <option value='South Dakota'>South Dakota</option>
+                <option value='Wisconsin'>Wisconsin</option>
 
-            {/* map state names here from props */}
-        </select>
+                {/* map state names here from props */}
+            </Select>
+        </FormControl>
     )
 }
 

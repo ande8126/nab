@@ -17,11 +17,19 @@ import {
 } from '@material-ui/core';
 //styling
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-const  useStyles = makeStyles({
+const  useStyles = makeStyles( ( theme )=>({
+  navMain: {
+    padding: '0 8px',
+    // ...theme.mixins.toolbar,
+  },
   drawer: {
-    width: '190px'
-  }
-})
+    width: '190px',
+  },
+  drawerPaper: {
+    backgroundColor: '#9500ae'
+  },
+  // appBarSpacer: theme.mixins.toolbar,
+}))
 //icons
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
@@ -85,7 +93,7 @@ function Nav() {
   return (
     <>
       <AppBar
-      position="fixed">
+      position="fixed" className={classes.navMain}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -102,11 +110,12 @@ function Nav() {
         className={classes.drawer}
         anchor="left"
         open={navOpen}
+        classes={{ paper: classes.drawerPaper }}
       >
         <IconButton onClick={handleNavClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon /> }
         </IconButton>  
-        <List>
+        <List className={classes.drawerList}>
           {navList.map((item, index) =>{
             const { text, icon, onClick } = item
             return(
@@ -119,6 +128,7 @@ function Nav() {
           )}
         </List>
       </MUIDrawer>
+      <div className={classes.appBarSpacer} />
     </>
     // <div className="nav">
     //   <Link to="/home">

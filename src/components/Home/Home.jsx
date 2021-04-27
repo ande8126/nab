@@ -16,9 +16,18 @@ import AddIcon from '@material-ui/icons/Add';
 //- STYLING STUFF -//
 import { makeStyles } from '@material-ui/core/styles';
 const  useStyles = makeStyles(theme=>({
+    homeRoot: {
+        padding: '0 0',
+        //...theme.mixins.toolbar,
+    },
+
+    //spacer: theme.mixins.toolbar,
+
     appBar: {
         top: 'auto',
         bottom: 0,
+        padding: '0 0',
+        ...theme.mixins.toolbar,
     },
     fabButton: {
         position: 'absolute',
@@ -31,6 +40,7 @@ const  useStyles = makeStyles(theme=>({
     grow: {
         flexGrow: 1,
     },
+    appBarSpacer: theme.mixins.toolbar,
 }))
 
 
@@ -74,16 +84,15 @@ const Home = () => {
     console.log('requests:', requests);
     return (
 
-        <div className="home-section">
-            <br />
-            <br />
-            <br />
+        <div className={classes.homeRoot}>
+            <div className={classes.spacer} />
             <h3>Your requests:</h3>
             {/* conditionally render: 'make your 1st request'*/}
             {displayWelcome()}
             {/* props to RequestList for map */}
             <RequestList requests={requests} />
             {/* Plus sign icon here, links to CreateRequest */}
+            <div className={classes.appBarSpacer} />
             <AppBar position="fixed" color="primary" className={classes.appBar}>
                 <Toolbar>
                     <Fab color="secondary" aria-label="add" className={classes.fabButton} onClick={addRequest}>

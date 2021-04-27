@@ -12,13 +12,13 @@ const useStyles = makeStyles({
     }
 })
 
-const RequestList = ( {requests, triggerReload} ) => {
+const RequestList = ( {requests} ) => {
     const classes = useStyles();
     return (
-        <Grid container className={classes.gridContainer}>
-            <Grid item xs={12} >
-            {requests.map( request => <RequestItem key={request.id} request={request} triggerReload={triggerReload} /> )}
-            </Grid>
+        <Grid container className={classes.gridContainer} spacing={4} justify="center">
+            
+            {requests.map( request => <Grid item xs={12}><RequestItem key={request.id} request={request} /></Grid> )}
+            
         </Grid>
     )
 }

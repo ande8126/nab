@@ -23,7 +23,13 @@ import { makeStyles } from '@material-ui/core/styles';
 //styles go here:
 const useStyles = makeStyles( (theme) => ({
     root: {
-        width: '100%',
+        minWidth: '100%',
+    },
+    header: {
+        borderBottom: '4px solid #fcecae',
+    },
+    recordsSynopsis: {
+        paddingBottom: '20px'
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -37,14 +43,14 @@ const useStyles = makeStyles( (theme) => ({
     },
 }));
 //grid
-import Grid from '@material-ui/core/Grid'
+//import Grid from '@material-ui/core/Grid'
 //icons
 import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { StayPrimaryPortraitTwoTone } from '@material-ui/icons';
 
 
-const RequestItem = ( {request, triggerReload} ) => {
+const RequestItem = ( {request} ) => {
     //format date on page load 
     useEffect( ()=>{
         makeDate( request.date )
@@ -99,20 +105,27 @@ const RequestItem = ( {request, triggerReload} ) => {
                 <CloseIcon />
             </IconButton>
             }
+            titleTypographyProps={{variant:'h6' }}
             title={request.title}
+            subheaderTypographyProps={{variant:'body2' }}
+            subheader={date}
+            className={classes.header}
             />
             <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    Sent: <span>{date}</span>
+                <Typography variant="body1" component="p" className={classes.recordsSynopsis}>
+                    Records synopsis here
                 </Typography>
-            </CardContent>
-            <CardActions>
                 <FormGroup row>
                     <FormControlLabel
                     control={<Switch checked={request.response} onChange={()=>handleResponse( request.id )} name="checkedA" />}
-                    label="Response"
+                    label={<Typography variant="body2" color="textSecondary">Response</Typography>}
                     />
                 </FormGroup>
+            </CardContent>
+            <CardActions >
+                <Typography variant="body2">
+                    SEE THE FULL EMAIL:
+                </Typography>
                 <IconButton
                     className={clsx(classes.expand, {
                         [classes.expandOpen]: expanded,
@@ -126,8 +139,7 @@ const RequestItem = ( {request, triggerReload} ) => {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography paragraph>Email:</Typography>
-                    <Typography>
+                    <Typography variant="body2">
                         {request.email_body}
                     </Typography>
                 </CardContent>

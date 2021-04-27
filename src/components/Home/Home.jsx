@@ -41,10 +41,7 @@ const Home = () => {
     const dispatch = useDispatch();
     //needed for history
     const history = useHistory();
-    //function for GET dispatch (needs to be props to ReqList and ReqItem)
-    const triggerReload = () =>{
-        window.location.reload();
-    }
+
     //dispatch for GET call on load for all requests
     useEffect(()=>{
         dispatch( { type: 'FETCH_REQUESTS' } ); //this will need to include user_id as param
@@ -85,7 +82,7 @@ const Home = () => {
             {/* conditionally render: 'make your 1st request'*/}
             {displayWelcome()}
             {/* props to RequestList for map */}
-            <RequestList requests={requests} triggerReload={triggerReload} />
+            <RequestList requests={requests} />
             {/* Plus sign icon here, links to CreateRequest */}
             <AppBar position="fixed" color="primary" className={classes.appBar}>
                 <Toolbar>

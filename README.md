@@ -10,9 +10,9 @@ Nab’s Home screen shows a record of the user’s past open records request in 
 
 ## Tech
 
- React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+ React, Redux, Express, Passport, and PostgreSQL, MaterialUI (a full list of dependencies can be found in `package.json`).
 
-# See it
+## See it
 
 Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/home](Nab)
 
@@ -99,26 +99,23 @@ Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/
   [x] dispatch for Response (PUT)
   [ ] SocketIO for instant updating?
 [ ] CreateRequest pt 3
-  [ ] entries for all 50 states
-    - MuckRock API?
-    - Writing entries for each state
   [ ] revamp UI of component (breadcrumbs?)
 [ ] Bugs
   [x] Text not resetting on "letters" textbox (dropdown handler? POST route?)
   [ ] Connect StateDropdown to db (Saga/GET to "letters")
   [x] Add "user_id" to POST route (so results can be specific)
   [x] Add "user_id" to initial GET route (so results are user specific)
-  [ ] figure out theme "mixins" so MUI elements dont cover each other
+  [x] figure out theme "mixins" so MUI elements dont cover each other
   [ ] change color of drop shadow to yellow?
 [ ] Styling
   [x] Nav bar - drawers/popout menu
   [x] Home - "+" icon for linking to CreateRequest
-  [ ] RequestItem cards
+  [x] RequestItem cards
   [x] RequestList
-  [ ] CreateRequest - buttons, inputs, 'X' button to close instead of "back button"
-  [ ] Confirmation - textbox, buttons
+  [x] CreateRequest - buttons, inputs, 'X' button to close instead of "back button"
+  [x] Confirmation - textbox, buttons
   [ ] Registration screen - inputs/buttons
   [ ] Research MUI 'Box' elements
-  [ ] Make logo for Nab
+  [x] Make logo for Nab
 
 [ ] Stretch goals...

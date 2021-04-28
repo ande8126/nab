@@ -13,6 +13,7 @@ import {
     CardContent,
     CardHeader,
     Collapse,
+    Divider,
     Switch, 
     FormControlLabel, 
     FormGroup,
@@ -29,8 +30,14 @@ const useStyles = makeStyles( (theme) => ({
         borderBottom: '4px solid #fcecae',
         backgroundColor: '#fffef2'
     },
+    previewPane: { 
+        padding: '7px 5px',
+        backgroundColor: '#fafdfd',
+    },
     recordsSynopsis: {
-        paddingBottom: '20px'
+        color: 'textSecondary',
+        fontSize: 13,
+        fontStyle: 'oblique',
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -48,25 +55,27 @@ const useStyles = makeStyles( (theme) => ({
 //icons
 import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { StayPrimaryPortraitTwoTone } from '@material-ui/icons';
 
 
 const RequestItem = ( {request} ) => {
     //format date on page load 
     useEffect( ()=>{
         makeDate( request.date )
+        makePreview( request.email_body )
     }, [] )
     //needed for MaterialUI classes
     const classes = useStyles();
     //needed for dispatch
     const dispatch = useDispatch();
     //local state for date
-    const [ date, setDate ] = useState('')
+    const [ date, setDate ] = useState( '' )
+    //local state for preview
+    const [ preview, setPreview ] = useState( '' )
     //function to make date more readable
     const makeDate = ( requestDate ) =>{
+        console.log( 'the date:', requestDate );
         let tempDate = '';
         for ( let i=0; i<requestDate.length; i++ ){
-            console.log( 'making date:', requestDate[i] );
             if ( requestDate[i] === 'T' ){
                 setDate( tempDate )
                 break
@@ -75,6 +84,17 @@ const RequestItem = ( {request} ) => {
             }
         }
     }//end makeDate
+
+    //function to make preview for preview pane
+    const makePreview = ( email ) =>{
+        console.log( 'in makePreview with:', typeof email );
+        let tempPreview = '';
+        for( let i=0; i<250; i++ ){
+            console.log( email[i] );
+            tempPreview += email[i];
+        }
+        setPreview( tempPreview + ' ...' )
+    } 
 
     //function to delete a request
     const deleteRequest = ( id ) =>{
@@ -112,17 +132,18 @@ const RequestItem = ( {request} ) => {
             subheader={date}
             className={classes.header}
             />
-            <CardContent>
-                <Typography variant="body1" component="p" className={classes.recordsSynopsis}>
-                    Records synopsis here
+            <CardContent className={classes.previewPane}>
+                <Typography variant="body2" component="p" className={classes.recordsSynopsis}>
+                    {preview}
                 </Typography>
                 <FormGroup row>
                     <FormControlLabel
                     control={<Switch checked={request.response} onChange={()=>handleResponse( request.id )} name="checkedA" />}
-                    label={<Typography variant="body2" color="textSecondary">Response</Typography>}
+                    label={<Typography variant="body2" color="textSecondary">Initial response</Typography>}
                     />
                 </FormGroup>
             </CardContent>
+            <Divider />
             <CardActions >
                 <Typography variant="body2">
                     SEE THE FULL EMAIL:

@@ -39,7 +39,7 @@ const  useStyles = makeStyles(theme=>({
         flexGrow: 1,
     },
     header: {
-        padding: '20px 30px'
+        padding: '12px 30px'
     },
     divider: {
         marginBottom: '10px',

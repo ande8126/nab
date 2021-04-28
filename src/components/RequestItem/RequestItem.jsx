@@ -61,7 +61,7 @@ const RequestItem = ( {request} ) => {
     //format date on page load 
     useEffect( ()=>{
         makeDate( request.date )
-        makePreview( request.email_body )
+        //NOT WORKING: makePreview( request.email_body )
     }, [] )
     //needed for MaterialUI classes
     const classes = useStyles();
@@ -70,7 +70,7 @@ const RequestItem = ( {request} ) => {
     //local state for date
     const [ date, setDate ] = useState( '' )
     //local state for preview
-    const [ preview, setPreview ] = useState( '' )
+    const [ preview, setPreview ] = useState( '(preview)' )
     //function to make date more readable
     const makeDate = ( requestDate ) =>{
         console.log( 'the date:', requestDate );
@@ -86,15 +86,16 @@ const RequestItem = ( {request} ) => {
     }//end makeDate
 
     //function to make preview for preview pane
-    const makePreview = ( email ) =>{
-        console.log( 'in makePreview with:', typeof email );
-        let tempPreview = '';
-        for( let i=0; i<250; i++ ){
-            console.log( email[i] );
-            tempPreview += email[i];
-        }
-        setPreview( tempPreview + ' ...' )
-    } 
+    //WHY ISNT THIS WORKING?
+    // const makePreview = ( email ) =>{
+    //     console.log( 'in makePreview with:', typeof email );
+    //     let tempPreview = '';
+    //     for( let i=0; i<250; i++ ){
+    //         console.log( email[i] );
+    //         tempPreview += email[i];
+    //     }
+    //     setPreview( tempPreview + ' ...' )
+    // } 
 
     //function to delete a request
     const deleteRequest = ( id ) =>{

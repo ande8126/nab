@@ -12,6 +12,10 @@ Nab’s Home screen shows a record of the user’s past open records request in 
 
  React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
+# See it
+
+Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/home](Nab)
+
 ## Wireframes
 
 ### Nab home screen

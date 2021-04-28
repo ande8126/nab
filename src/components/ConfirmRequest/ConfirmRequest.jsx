@@ -2,12 +2,41 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import useClippy from 'use-clippy';
+import { 
+    Button,
+    Box,
+    Divider, 
+    TextField,
+    Typography
+    } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+//styles here
+const useStyles = makeStyles(theme=>({
+    confirmRoot: {
+        paddingLeft: '30px',
+        paddingRight: '30px',
+    },
+    header: {
+        ...theme.typography.button,
+        marginTop: '10px',
+        padding: '5px',
+    },
+    divider: {
+        marginBottom: '20px',
+    },
+    textField: {
+        marginLeft: '10px',
+        marginBottom: '18px',
+    }
+}))
 
 const ConfirmRequest = () => {
     //needed for dispatch
     const dispatch = useDispatch();
     //needed for history
     const history = useHistory();
+    //needed for mui styling
+    const classes = useStyles();
     //useSelector to bring in tempRequest object
     const request = useSelector( ( store )=>{
         return store.tempRequest;
@@ -42,19 +71,40 @@ const ConfirmRequest = () => {
 
 
     return (
-        <div>
-            <br />
-            <br />
-            <h2>Your request:</h2>
-            {/* FOR TESTING REDUX STORE: <p>{JSON.stringify( emailBody )}</p> */}
-            <textarea cols="25"rows="20" value={emailBody}></textarea>
+        <Box className={classes.confirmRoot}>
+            <Typography variant="h5" color="textSecondary" className={classes.header}>
+                Confirm your request{/* FOR TESTING REDUX STORE: <p>{JSON.stringify( emailBody )}</p> */}
+            </Typography>
+            <Divider className={classes.divider}/>
+            <TextField
+                className={classes.textField}
+                variant="outlined" 
+                label="email"
+                multiline
+                rows={17}
+                color="secondary"
+                value={emailBody}
+                />
             <Link to="/create">
-                <button>Back</button>
+                <Button>Back</Button>
             </Link>
-            <button disabled = {isDisabled} onClick={handleCopy}>Copy</button>
-            <button onClick={()=>addRequest( request )}>Save</button>
+            <Button 
+                disabled = {isDisabled}
+                variant="contained"
+                color="primary" 
+                onClick={handleCopy}
+            >
+                Copy
+            </Button>
+            <Button
+                variant="contained"
+                color="secondary" 
+                onClick={()=>addRequest( request )}
+            >
+                Save
+            </Button>
             
-        </div>
+        </Box>
     )
 }
 

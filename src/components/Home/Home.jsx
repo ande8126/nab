@@ -6,6 +6,7 @@ import './Home.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     AppBar,
+    Divider,
     Fab,
     IconButton,
     Toolbar,
@@ -18,10 +19,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const  useStyles = makeStyles(theme=>({
     homeRoot: {
         padding: '0 0',
-        //...theme.mixins.toolbar,
     },
-
-    //spacer: theme.mixins.toolbar,
 
     appBar: {
         top: 'auto',
@@ -39,6 +37,13 @@ const  useStyles = makeStyles(theme=>({
     },
     grow: {
         flexGrow: 1,
+    },
+    header: {
+        padding: '20px 30px'
+    },
+    divider: {
+        marginBottom: '10px',
+        margin: '0 10px'
     },
     appBarSpacer: theme.mixins.toolbar,
 }))
@@ -86,7 +91,11 @@ const Home = () => {
 
         <div className={classes.homeRoot}>
             <div className={classes.spacer} />
-            <h3>Your requests:</h3>
+
+            <Typography variant="body1" className={classes.header} color="textSecondary">
+                HOME
+            </Typography>
+            <Divider className={classes.divider} />
             {/* conditionally render: 'make your 1st request'*/}
             {displayWelcome()}
             {/* props to RequestList for map */}

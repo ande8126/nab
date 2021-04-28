@@ -2,12 +2,24 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import StateDropdown from '../StateDropdown/StateDropdown'
-import { Box, TextField } from '@material-ui/core';
+import { 
+    Button,
+    Box,
+    Divider, 
+    TextField,
+    Typography
+    } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 //styles here
 const useStyles = makeStyles(theme=>({
     createRoot: {
-        paddingLeft: '30px'
+        paddingLeft: '30px',
+        paddingRight: '30px',
+    },
+    header: {
+        ...theme.typography.button,
+        marginTop: '10px',
+        padding: '5px'
     },
 }))
 
@@ -74,7 +86,10 @@ const CreateRequest = () => {
 
     return (
         <Box className={classes.createRoot} paddingBottom="10px">
-            <h2>Build your request...</h2>
+            <Typography variant="h5" color="textSecondary" className={classes.header}>
+                BUILD YOUR REQUEST
+            </Typography>
+            <Divider />
             {/* <select>
                 <option value=''>Please select</option>
                 
@@ -88,18 +103,24 @@ const CreateRequest = () => {
             variant="outlined" 
             type="text" 
             label="Description"
+            InputLabelProps={{
+                shrink: true,
+            }}
             color="secondary"
-            helperText="A quick description"
+            placeholder="Brief description"
             onChange={handleTitle} />
+            <br />
             <br />
             <TextField 
             variant="outlined" 
             type="text" 
-            label="Recipient" 
-            helperText="Department or person"
+            label="Recipient"
+            InputLabelProps={{
+                shrink: true,
+            }} 
+            placeholder="Department or person"
             color="secondary"
             onChange={handleRecipient} />
-            {/* <input type="text" placeholder="records here... be specific" onChange={handleRecords} /> */}
             <p><TextField
                 variant="outlined" 
                 label="email"
@@ -114,9 +135,9 @@ const CreateRequest = () => {
                 defaultValue={starterText.body} 
                 /></p>
             <Link to="/home">
-                <button>Back</button>
+                <Button>Back</Button>
             </Link>
-            <button onClick={()=>createLetter( tempRequest )}>Confirm</button>
+            <Button variant="contained" color="primary" onClick={()=>createLetter( tempRequest )}>Confirm</Button>
         </Box>
     )
 }

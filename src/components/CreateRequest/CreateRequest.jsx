@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 //styles here
 const useStyles = makeStyles(theme=>({
     createRoot: {
-        flexDirection: "column",
+        paddingLeft: '30px'
     },
 }))
 
@@ -73,7 +73,7 @@ const CreateRequest = () => {
     }
 
     return (
-        <Box>
+        <Box className={classes.createRoot} paddingBottom="10px">
             <h2>Build your request...</h2>
             {/* <select>
                 <option value=''>Please select</option>
@@ -82,15 +82,34 @@ const CreateRequest = () => {
             {/* Props GET call to StateDropdown: */}
             <StateDropdown getStateLetter={getStateLetter} />
             <br />
-            <TextField type="text" placeholder="title" onChange={handleTitle} />
             <br />
-            <TextField type="text" placeholder="recipient" onChange={handleRecipient} />
+            <TextField 
+            id="outlined-helperText"
+            variant="outlined" 
+            type="text" 
+            label="Description"
+            color="secondary"
+            helperText="A quick description"
+            onChange={handleTitle} />
+            <br />
+            <TextField 
+            variant="outlined" 
+            type="text" 
+            label="Recipient" 
+            helperText="Department or person"
+            color="secondary"
+            onChange={handleRecipient} />
             {/* <input type="text" placeholder="records here... be specific" onChange={handleRecords} /> */}
-
-            <p><TextField 
+            <p><TextField
+                variant="outlined" 
+                label="email"
                 multiline
                 rows={7}
                 cols={30}
+                InputLabelProps={{
+                    shrink: true,
+                }}
+                color="secondary"
                 onChange={handleText} 
                 defaultValue={starterText.body} 
                 /></p>

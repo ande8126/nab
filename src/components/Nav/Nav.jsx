@@ -20,7 +20,6 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 const  useStyles = makeStyles( ( theme )=>({
   navMain: {
     padding: '0 8px',
-    // ...theme.mixins.toolbar,
   },
   drawer: {
     width: '190px',
@@ -28,7 +27,10 @@ const  useStyles = makeStyles( ( theme )=>({
   drawerPaper: {
     backgroundColor: '#9500ae'
   },
-  // appBarSpacer: theme.mixins.toolbar,
+  logo: {
+    width: '26%',
+    maxWidth: '75px'
+  }
 }))
 //icons
 import InboxIcon from '@material-ui/icons/MoveToInbox';
@@ -103,7 +105,7 @@ function Nav() {
           >
             <MenuIcon />
           </IconButton>
-          <img className="logo" src="https://i.imgur.com/1FFPq48.png" />
+          <img className={classes.logo} src="https://i.imgur.com/1FFPq48.png" />
         </Toolbar>
       </AppBar> 
       <MUIDrawer 

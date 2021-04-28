@@ -100,11 +100,12 @@ Nab’s Home screen shows a record of the user’s past open records request in 
     - Writing entries for each state
   [ ] revamp UI of component (breadcrumbs?)
 [ ] Bugs
-  [ ] Text not resetting on "letters" textbox (dropdown handler? POST route?)
+  [x] Text not resetting on "letters" textbox (dropdown handler? POST route?)
   [ ] Connect StateDropdown to db (Saga/GET to "letters")
-  [ ] Add "user_id" to POST route (so results can be specific)
-  [ ] Add "user_id" to initial GET route (so results are user specific)
+  [x] Add "user_id" to POST route (so results can be specific)
+  [x] Add "user_id" to initial GET route (so results are user specific)
   [ ] figure out theme "mixins" so MUI elements dont cover each other
+  [ ] change color of drop shadow to yellow?
 [ ] Styling
   [x] Nav bar - drawers/popout menu
   [x] Home - "+" icon for linking to CreateRequest

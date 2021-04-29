@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+//pass in nav bar
+import Nav from '../Nav/Nav';
 //pass in RequestList for props
 import RequestList from '../RequestList/RequestList'
 import { useHistory, Link } from 'react-router-dom';
@@ -6,6 +8,9 @@ import './Home.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     AppBar,
+    Button,
+    Box,
+    TextField,
     Divider,
     Fab,
     IconButton,
@@ -20,7 +25,11 @@ const  useStyles = makeStyles(theme=>({
     homeRoot: {
         padding: '0 0',
     },
-
+    nav: {
+        padding: '0 0',
+        ...theme.mixins.toolbar
+    },
+    navBarSpacer: theme.mixins.toolbar,
     appBar: {
         top: 'auto',
         bottom: 0,
@@ -89,8 +98,9 @@ const Home = () => {
     console.log('requests:', requests);
     return (
 
-        <div className={classes.homeRoot}>
-            <div className={classes.spacer} />
+        <Box className={classes.homeRoot}>
+            <Nav className={classes.nav}/>
+            <div className={classes.navBarSpacer} />
 
             <Typography variant="body1" className={classes.header} color="textSecondary">
                 HOME
@@ -113,7 +123,7 @@ const Home = () => {
             {/* <Link to="/create">
                 <button>Create Request</button>
             </Link> */}
-        </div>
+        </Box>
     )
 }
 

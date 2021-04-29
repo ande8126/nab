@@ -54,13 +54,13 @@ function App() {
   return (
     <Router>
       <div className={classes.container}>
-        <Nav className={classes.nav}/>
-        <div className={classes.navBarSpacer} />
+
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/landing" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
+          
           <Route
             // shows AboutPage at all times (logged in or not)
             exact

@@ -16,6 +16,7 @@ const  useStyles = makeStyles( ( theme )=>({
     display: "flex",
     alignItems: "center",
     alignContent: "center",
+    justifyContent: "center",
   },
   formPanel: {
     padding: '10px',

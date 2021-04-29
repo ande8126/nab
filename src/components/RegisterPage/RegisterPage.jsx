@@ -24,16 +24,16 @@ function RegisterPage() {
   const classes = useStyles();
 
   return (
-    <Box className="registrationRoot">
+    <Box className={classes.registerRoot}>
       <img className={classes.headerLogo} src="https://i.imgur.com/1FFPq48.png" alt="logo" />
       <Divider />
           <RegisterForm />
-          <center>
-            <h4>Already a Member?</h4>
+          <Typography variant="body2" color="textSecondary">
+            Already a member?
+          </Typography>
             <Button onClick={() => { history.push( '/login' ) } }>
               Login
             </Button>
-          </center>
     </Box>
     // <div>
     //   <RegisterForm />

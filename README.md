@@ -107,15 +107,36 @@ Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/
   [x] Add "user_id" to initial GET route (so results are user specific)
   [x] figure out theme "mixins" so MUI elements dont cover each other
   [ ] change color of drop shadow to yellow?
-[ ] Styling
+  [ ] Make profile page (about component)
+    -useSelector for user
+    -DOM elements: Nav, Full name, username
+  [ ] counter for profile page
+    -useSelector for records
+    -DOM element: counter
+  [ ] Clean up comments/unused code
+    [ ] Home
+    [ ] RequestList
+    [ ] RequestItem
+    [ ] CreateRequest
+    [ ] ConfirmRequest
+    [ ] App.jsx
+    [ ] sagas
+    [ ] reducers
+    [ ] routes
+    [ ] server.js
+    [ ] LoginPage/Form
+    [ ] RegisterPage/Form
+    [ ] LandingPage
+    [ ] AboutPage
+[x] Styling
   [x] Nav bar - drawers/popout menu
   [x] Home - "+" icon for linking to CreateRequest
   [x] RequestItem cards
   [x] RequestList
   [x] CreateRequest - buttons, inputs, 'X' button to close instead of "back button"
   [x] Confirmation - textbox, buttons
-  [ ] Registration screen - inputs/buttons
-  [ ] Research MUI 'Box' elements
+  [x] Registration screen - inputs/buttons
+  [x] Research MUI 'Box' elements
   [x] Make logo for Nab
 
 [ ] Stretch goals...

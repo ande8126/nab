@@ -106,11 +106,10 @@ Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/
   [x] Add "user_id" to POST route (so results can be specific)
   [x] Add "user_id" to initial GET route (so results are user specific)
   [x] figure out theme "mixins" so MUI elements dont cover each other
-  [ ] change color of drop shadow to yellow?
-  [ ] Make profile page (about component)
+  [x] Make profile page (about component)
     -useSelector for user
     -DOM elements: Nav, Full name, username
-  [ ] counter for profile page
+  [x] counter for profile page
     -useSelector for records
     -DOM element: counter
   [ ] Clean up comments/unused code

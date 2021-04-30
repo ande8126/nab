@@ -43,6 +43,8 @@ const CreateRequest = () => {
     const user = useSelector((store) => store.user)
     //set user_id on load
     useEffect( ()=>{
+        //get letters data for dropdown (NOT WORKING)
+        dispatch( { type: 'FETCH_ALL_LETTERS' } );
         //set user_id foreign key
         setTempRequest( {...tempRequest, user_id: user.id } );
     }, [])
@@ -61,10 +63,14 @@ const CreateRequest = () => {
     // }
 
     //useSelector to draw from redux
+    //letter to edit
     const starterText = useSelector( ( store )=>{
         return store.letter;
     })
-    //const [ emailBody, setEmailBody ] = useState( '' )
+    //all letters/statenames for dropdown
+    const letters = useSelector( ( store )=>{
+        return store.allLetters;
+    })
 
     //function to handle textbox
     const handleText = ( event ) =>{
@@ -77,7 +83,7 @@ const CreateRequest = () => {
     //handler for dropdown to send GET request to db
     //props to StateDropdown component
     const getStateLetter = ( event ) =>{
-        dispatch({ type: 'FETCH_LETTER', payload: event.target.value } );
+        dispatch( { type: 'FETCH_LETTER', payload: event.target.value } );
     }
 
     //make object and bring over to confirmation page
@@ -103,7 +109,7 @@ const CreateRequest = () => {
                 
             </select> */}
             {/* Props GET call to StateDropdown: */}
-            <StateDropdown getStateLetter={getStateLetter} />
+            <StateDropdown letters={letters} getStateLetter={getStateLetter} />
             <br />
             <br />
             <TextField 

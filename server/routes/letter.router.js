@@ -7,14 +7,26 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   console.log( 'in letter.router GET', req.query.state );
-  state = req.query.state;
-  queryText = `SELECT * FROM "letters" WHERE "state"=$1;`;
-  pool.query( queryText, [ state ] ).then( ( results )=>{
-    res.send( results.rows );
-  }).catch( ( error )=>{
-    console.log( 'error in letters GET', error );
-    res.sendStatus( 500 );
-  })
+  if ( req.query.state ){ 
+    state = req.query.state;
+    let queryText = `SELECT * FROM "letters" WHERE "state"=$1;`;
+    pool.query( queryText, [ state ] ).then( ( results )=>{
+      res.send( results.rows );
+    }).catch( ( error )=>{
+      console.log( 'error in letters GET', error );
+      res.sendStatus( 500 );
+    })
+  }
+  else if ( req.query.state === 'undefined' ) {
+    console.log( 'in all letters GET' );
+    let queryText = `SELECT * FROM "letters";`;
+    pool.query( queryText ).then( ( results )=>{
+      res.send( results.rows );
+    }).catch( ( error )=>{
+      console.log( 'error in all letters GET', error );
+      res.sendStatus( 500 );
+    })
+  }  
 });
 
 /**

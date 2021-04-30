@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import { useHistory } from 'react-router-dom';
 import './Nav.css';
 import {useSelector, useDispatch} from 'react-redux';
 //mui drawer for making the nav a popoutmenu
@@ -13,7 +12,6 @@ import {
   ListItemIcon, 
   ListItemText,
   Toolbar,
-  Typography 
 } from '@material-ui/core';
 //styling
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -33,8 +31,6 @@ const  useStyles = makeStyles( ( theme )=>({
   }
 }))
 //icons
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -135,29 +131,6 @@ function Nav() {
       </MUIDrawer>
       <div className={classes.appBarSpacer} />
     </>
-    // <div className="nav">
-    //   <Link to="/home">
-    //     <h2 className="nav-title">Prime Solo Project</h2>
-    //   </Link>
-    //   <div>
-    //     <Link className="navLink" to={loginLinkData.path}>
-    //       {loginLinkData.text}
-    //     </Link>
-
-    //     {user.id && (
-    //       <>
-    //         <Link className="navLink" to="/create">
-    //           Create Request
-    //         </Link>
-    //         <LogOutButton className="navLink" />
-    //       </>
-    //     )}
-
-    //     <Link className="navLink" to="/about">
-    //       About
-    //     </Link>
-    //   </div>
-    // </div>
   );
 }
 

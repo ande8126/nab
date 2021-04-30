@@ -4,6 +4,7 @@ import user from './user.reducer';
 import requests from './requests.reducer';
 import letter from './letter.reducer';
 import tempRequest from './temprequest.reducer';
+import allLetters from './allletters.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   requests, //will bring in all existing records requests
   letter, //brings in letter from template
   tempRequest, //stores request object for confirm screen
+  allLetters, //gets all letters for StateDropdown component
 });
 
 export default rootReducer;

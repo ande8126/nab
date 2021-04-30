@@ -4,6 +4,7 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import requestsSaga from './requests.saga';
 import letterSaga from './letter.saga';
+import allLettersSaga from './allletters.saga';
 import sendRequestSaga from './sendrequest.saga';
 import responseSaga from './response.saga';
 import deleteSaga from './delete.saga';
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     sendRequestSaga(),
     responseSaga(),
     deleteSaga(),
+    allLettersSaga(),
   ]);
 }

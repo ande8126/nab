@@ -25,14 +25,14 @@ function LoginPage() {
 
   return (
     <Box className="registrationRoot">
-    <img className={classes.headerLogo} src="https://i.imgur.com/1FFPq48.png" alt="logo" />
-    <Divider />
+      <img className={classes.headerLogo} src="https://i.imgur.com/1FFPq48.png" alt="logo" />
+      <Divider />
+      <center>
       <LoginForm />
-        <center>
-          <Button onClick={() => { history.push( '/registration' ) } }>
-            Register
-          </Button>
-        </center>
+        <Button onClick={() => { history.push( '/registration' ) } }>
+          Register
+        </Button>
+      </center>
     </Box>
     // <div>
     //   <LoginForm />

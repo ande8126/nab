@@ -30,7 +30,7 @@ const useStyles = makeStyles( (theme) => ({
         borderBottom: '4px solid #fcecae',
         backgroundColor: '#fffef2'
     },
-    previewPane: { 
+    content: { 
         padding: '7px 5px',
         backgroundColor: '#fafdfd',
     },
@@ -133,10 +133,7 @@ const RequestItem = ( {request} ) => {
             subheader={date}
             className={classes.header}
             />
-            <CardContent className={classes.previewPane}>
-                <Typography variant="body2" component="p" className={classes.recordsSynopsis}>
-                    {preview}
-                </Typography>
+            <CardContent className={classes.content}>
                 <FormGroup row>
                     <FormControlLabel
                     control={<Switch checked={request.response} onChange={()=>handleResponse( request.id )} name="checkedA" />}
@@ -147,7 +144,7 @@ const RequestItem = ( {request} ) => {
             <Divider />
             <CardActions >
                 <Typography variant="body2">
-                    SEE THE FULL EMAIL:
+                    SEE THE EMAIL:
                 </Typography>
                 <IconButton
                     className={clsx(classes.expand, {

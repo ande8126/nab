@@ -4,22 +4,24 @@ import {useSelector} from 'react-redux';
 import {
   Button,
   Box,
-  Divider,
   Grid, 
   TextField,
   Typography
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 const  useStyles = makeStyles( ( theme )=>({
-  loginRoot: {
-    width: '100%',
-    display: "flex",
-    alignItems: "center",
-    alignContent: "center",
-    justifyContent: "center",
-  },
+  // loginRoot: {
+  //   width: '100%',
+  // },
   formPanel: {
-    padding: '10px',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  dividerCaption: {
+    marginBottom: '70px',
+  },
+  textField: {
+    paddingBottom: '10px',
   }
 }))
 
@@ -47,64 +49,53 @@ function LoginForm() {
   }; // end login
 
   return (
-    <Grid container className={classes.loginRoot} spacing={2}>
-      <Grid item xs={12}>
+    <Box className={classes.loginRoot}>
       <Typography
+      className={classes.dividerCaption}
       color="textSecondary"
       display="block"
       variant="caption"
       >
       Login
-      </Typography>
-      </Grid>
-        <Grid 
-        item xs={12} 
-        container
-        direction="column"
-        alignItems="center"
-        justify="center"
-        className={classes.loginForm}
-        >
-        <form className={classes.formPanel} onSubmit={login}>
-          {errors.loginMessage && (
-            <h3 role="alert">
-              {errors.loginMessage}
-            </h3>
-          )}
-          <Grid item xs={3} />
-          <Grid item xs={8}>
-              <TextField
-                label="Username"
-                type="text"
-                name="username"
-                variant="outlined"
-                color="secondary"
-                required
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-              />
+      </Typography>  
+      <form className={classes.formPanel} onSubmit={login}>
+        {errors.loginMessage && (
+          <h3 role="alert">
+            {errors.loginMessage}
+          </h3>
+        )}
+        <Grid container justify="center">
+          <Grid item xs={12}>
+            <TextField
+              label="Username"
+              type="text"
+              className={classes.textField}
+              variant="outlined"
+              color="secondary"
+              required
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
           </Grid>
-          <Grid item xs={2} />
-          <Grid item xs={2} />
-          <Grid item xs={8}>
-              <TextField
-                label="Password"
-                type="password"
-                name="password"
-                variant="outlined"
-                color="secondary"
-                required
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-              />
+          <Grid item xs={12}>
+            <TextField
+              label="Password"
+              type="password"
+              className={classes.textField}
+              variant="outlined"
+              color="secondary"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
           </Grid>
           <Grid item xs={2} />
           <Grid item xs={12}>
             <Button variant="contained" color="primary" type="submit" name="submit">Login</Button>
           </Grid>
-        </form>
-      </Grid>
-    </Grid>
+        </Grid>
+      </form>
+    </Box>
   );
 }
 

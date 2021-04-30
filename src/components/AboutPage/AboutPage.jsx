@@ -27,7 +27,7 @@ const  useStyles = makeStyles( ( theme )=>({
   navBarSpacer: theme.mixins.toolbar,
   nameContainer: {
     padding: '5px 20px',
-    margin: '2px 20px',
+    margin: '10px 20px',
     backgroundColor: '#dcd4e9',
     borderBottom: 'solid 4px #cbc3e3'
   },
@@ -85,6 +85,7 @@ function AboutPage() {
       <Typography variant="h2" className={classes.aboutHeader} color="textSecondary">
         ABOUT
       </Typography>
+      <Divider />
       <Paper className={classes.nameContainer}>
       <Typography variant="h3" align="center" className={classes.name}>
         {user.firstname} {user.lastname}

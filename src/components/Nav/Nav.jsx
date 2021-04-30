@@ -25,7 +25,7 @@ const  useStyles = makeStyles( ( theme )=>({
     width: '190px',
   },
   drawerPaper: {
-    backgroundColor: '#9500ae'
+    backgroundColor: '#cbc3e3'
   },
   logo: {
     width: '26%',
@@ -39,6 +39,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import HomeIcon from '@material-ui/icons/Home';
+import AddIcon from '@material-ui/icons/Add';
+import PersonIcon from '@material-ui/icons/Person';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -78,15 +81,15 @@ function Nav() {
     onClick: ()=>{handleNavClose(); history.push(loginLinkData.path)}
   }, {
     text: 'Create Request',
-    icon: <MailIcon />,
+    icon: <AddIcon />,
     onClick: ()=> {handleNavClose(); history.push('/create')}
   }, {
-    text: 'About/Profile',
-    icon: <MailIcon />,
+    text: 'Profile',
+    icon: <PersonIcon />,
     onClick: ()=> {handleNavClose(); history.push('/about')}
   }, {
     text: 'Logout',
-    icon: <MailIcon />,
+    icon: <ExitToAppIcon />,
     onClick: ()=> {handleNavClose(); dispatch({ type: 'LOGOUT' })}
   } ]
 

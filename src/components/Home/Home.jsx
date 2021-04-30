@@ -47,6 +47,7 @@ const  useStyles = makeStyles(theme=>({
         flexGrow: 1,
     },
     header: {
+        fontSize: '14px',
         padding: '12px 30px'
     },
     divider: {
@@ -101,7 +102,7 @@ const Home = () => {
             <Nav className={classes.nav}/>
             <div className={classes.navBarSpacer} />
 
-            <Typography variant="body1" className={classes.header} color="textSecondary">
+            <Typography variant="h2" className={classes.header} color="textSecondary">
                 HOME
             </Typography>
             <Divider className={classes.divider} />

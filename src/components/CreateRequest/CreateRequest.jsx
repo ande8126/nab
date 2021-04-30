@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import StateDropdown from '../StateDropdown/StateDropdown'
+import Nav from '../Nav/Nav';
 import { 
     Button,
     Box,
@@ -21,6 +22,11 @@ const useStyles = makeStyles(theme=>({
         marginTop: '10px',
         padding: '5px'
     },
+    nav: {
+        padding: '0 0',
+        ...theme.mixins.toolbar
+    },
+    navBarSpacer: theme.mixins.toolbar,
 }))
 
 
@@ -86,6 +92,8 @@ const CreateRequest = () => {
 
     return (
         <Box className={classes.createRoot} paddingBottom="10px">
+            <Nav className={classes.nav}/>
+            <div className={classes.navBarSpacer} />
             <Typography variant="h5" color="textSecondary" className={classes.header}>
                 BUILD YOUR REQUEST
             </Typography>

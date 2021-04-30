@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import Nav from '../Nav/Nav';
 import useClippy from 'use-clippy';
 import { 
     Button,
@@ -21,6 +22,11 @@ const useStyles = makeStyles(theme=>({
         marginTop: '10px',
         padding: '5px',
     },
+    nav: {
+        padding: '0 0',
+        ...theme.mixins.toolbar
+    },
+    navBarSpacer: theme.mixins.toolbar,
     divider: {
         marginBottom: '20px',
     },
@@ -72,6 +78,8 @@ const ConfirmRequest = () => {
 
     return (
         <Box className={classes.confirmRoot}>
+            <Nav className={classes.nav}/>
+            <div className={classes.navBarSpacer} />
             <Typography variant="h5" color="textSecondary" className={classes.header}>
                 Confirm your request{/* FOR TESTING REDUX STORE: <p>{JSON.stringify( emailBody )}</p> */}
             </Typography>

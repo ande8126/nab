@@ -25,13 +25,19 @@ const  useStyles = makeStyles( ( theme )=>({
     ...theme.mixins.toolbar
 },
   navBarSpacer: theme.mixins.toolbar,
+  nameContainer: {
+    padding: '5px 20px',
+    margin: '2px 20px',
+    backgroundColor: '#dcd4e9',
+    borderBottom: 'solid 4px #cbc3e3'
+  },
   name: {
-    fontSize: '24px',
-    padding: '22px 18px',
+    fontSize: '20px',
+    padding: '10px 5px',
   },
   profile: {
     padding: '20px',
-    margin: '20px',
+    margin: '0px 20px',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -79,11 +85,11 @@ function AboutPage() {
       <Typography variant="h2" className={classes.aboutHeader} color="textSecondary">
         ABOUT
       </Typography>
-      <Divider />
+      <Paper className={classes.nameContainer}>
       <Typography variant="h3" align="center" className={classes.name}>
         {user.firstname} {user.lastname}
       </Typography>
-      <Divider />
+      </Paper>
       <Paper className={classes.profile}>
       <Typography variant="p" className={classes.profileData}>
         Username: <span>{user.username}</span>

@@ -5,7 +5,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchAllLetters() {
     try {
         const letters = yield axios.get( '/api/letter' );
-        yield put( { type: 'SET_ALL_LETTERS', payload: letters } )
+        yield put( { type: 'SET_ALL_LETTERS', payload: letters.data } )
     } catch ( error ) {
         console.log( 'Letter get request failed', error );
     }

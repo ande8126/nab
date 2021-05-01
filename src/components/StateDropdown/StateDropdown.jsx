@@ -19,25 +19,25 @@ const StateDropdown = ( { letters, getStateLetter }) => {
     const classes = useStyles()
 
     return (
-        <>
-            <p>{JSON.stringify( letters )}</p>
-        </>
-        // <FormControl>
-        //     <InputLabel>State</InputLabel>
-        //     <Select onChange={getStateLetter} color="secondary" className={classes.dropdown} label="state">
-        //         <option value='' />
-        //         { letters.map( ( letter )=> <option value={letter.state} key={letter.id} >{letter.state}</option>) }
+        // <>
+        //     <p>{JSON.stringify( letters )}</p>
+        // </>
+        <FormControl>
+            <InputLabel>State</InputLabel>
+            <Select onChange={getStateLetter} color="secondary" className={classes.dropdown} label="state">
+                <option value='' />
+                { letters.map( ( letter )=> <option value={letter.id} key={letter.id} >{letter.state}</option>) }
 
-        //         {/* <option>test</option>
-        //         <option>test2</option>
-        //         <option value='Florida'>Florida</option>
-        //         <option value='Minnesota'>Minnesota</option>
-        //         <option value='South Dakota'>South Dakota</option>
-        //         <option value='Wisconsin'>Wisconsin</option> */}
+                {/* <option>test</option>
+                <option>test2</option>
+                <option value='Florida'>Florida</option>
+                <option value='Minnesota'>Minnesota</option>
+                <option value='South Dakota'>South Dakota</option>
+                <option value='Wisconsin'>Wisconsin</option> */}
 
-        //         {/* map state names here from props */}
-        //     </Select>
-        // </FormControl>
+                {/* map state names here from props */}
+            </Select>
+        </FormControl>
     )
 }
 

@@ -6,7 +6,8 @@ import useClippy from 'use-clippy';
 import { 
     Button,
     Box,
-    Divider, 
+    Divider,
+    Grid, 
     TextField,
     Typography
     } from '@material-ui/core';
@@ -14,7 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 //styles here
 const useStyles = makeStyles(theme=>({
     confirmRoot: {
-        paddingLeft: '30px',
+        paddingLeft: '10px',
         paddingRight: '30px',
     },
     header: {
@@ -84,34 +85,40 @@ const ConfirmRequest = () => {
                 Confirm your request{/* FOR TESTING REDUX STORE: <p>{JSON.stringify( emailBody )}</p> */}
             </Typography>
             <Divider className={classes.divider}/>
-            <TextField
-                className={classes.textField}
-                variant="outlined" 
-                label="email"
-                multiline
-                rows={17}
-                color="secondary"
-                value={emailBody}
-                />
-            <Link to="/create">
-                <Button>Back</Button>
-            </Link>
-            <Button 
-                disabled = {isDisabled}
-                variant="contained"
-                color="primary" 
-                onClick={handleCopy}
-            >
-                Copy
-            </Button>
-            <Button
-                variant="contained"
-                color="secondary" 
-                onClick={()=>addRequest( request )}
-            >
-                Save
-            </Button>
-            
+            <Grid container spacing={1}>
+                <Grid item xs={12}>
+                    <TextField
+                        className={classes.textField}
+                        variant="outlined" 
+                        label="email"
+                        multiline
+                        rows={17}
+                        fullWidth
+                        color="secondary"
+                        value={emailBody}
+                        />
+                </Grid>
+                <Grid item xs={12} align="center">
+                    <Link to="/create">
+                        <Button>Back</Button>
+                    </Link>
+                    <Button 
+                        disabled = {isDisabled}
+                        variant="contained"
+                        color="primary" 
+                        onClick={handleCopy}
+                    >
+                        Copy
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="secondary" 
+                        onClick={()=>addRequest( request )}
+                    >
+                        Save
+                    </Button>
+                </Grid>
+            </Grid>
         </Box>
     )
 }

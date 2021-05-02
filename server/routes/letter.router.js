@@ -17,7 +17,7 @@ router.get('/:letterId', (req, res) => {
 //get all letter data for StateDropdown
 router.get('/', (req, res) => {
   console.log( 'in all letters GET' );
-  let queryText = `SELECT * FROM "letters";`;
+  let queryText = `SELECT * FROM "letters" ORDER BY "state" ASC;`;
   pool.query( queryText ).then( ( results )=>{
     res.send( results.rows );
   }).catch( ( error )=>{

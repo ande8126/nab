@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import './AboutPage.css'
 import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 import { useSelector } from 'react-redux';
 import {
   Box,
   Divider,
+  Grid,
   Paper, 
   Typography 
 } from '@material-ui/core';
@@ -37,15 +40,22 @@ const  useStyles = makeStyles( ( theme )=>({
   },
   profile: {
     padding: '20px',
-    margin: '0px 20px',
+    margin: '10px 20px',
     display: 'flex',
     flexDirection: 'column',
+
   },
   profileData: {
     fontSize: '12px',
     color: 'gray',
     paddingBottom: '5px'
-  }
+  },
+  tech: {
+    padding: '20px',
+    margin: '0px 20px',
+    display: 'flex',
+    flexDirection: 'column',
+  },
 }))
 
 // <3 Prime instructors for this, but it's no longer true, now this component cares way too much: 
@@ -76,7 +86,12 @@ function AboutPage() {
   }//end makeDate
   //run makeDate on load
   useEffect( ()=>{
-    makeDate( requests[requests.length-1].date )
+    if ( requests[0] === undefined ){
+      setDate( 'No active requests' )
+    }
+    else {
+      makeDate( requests[requests.length-1].date )
+    }
   }, [] )
   return (
     <Box className={classes.container}>
@@ -92,16 +107,54 @@ function AboutPage() {
       </Typography>
       </Paper>
       <Paper className={classes.profile}>
-      <Typography variant="p" className={classes.profileData}>
+      <Typography variant="body1" className={classes.profileData}>
         Username: <span>{user.username}</span>
       </Typography>
-      <Typography variant="p" className={classes.profileData}>
-        Requests made: <span>{requests.length}</span>
+      <Typography variant="body1" className={classes.profileData}>
+        Active requests: <span>{requests.length}</span>
       </Typography>
-      <Typography variant="p" className={classes.profileData}>
+      <Typography variant="body1" className={classes.profileData}>
         Date of last request: <span>{date}</span>
       </Typography>
       </Paper>
+      <Paper className={classes.tech}>
+      <Typography variant="body1" align="center" className={classes.profileData}>
+        Tech used:
+      </Typography>
+        <Grid container spacing={1}>
+          <Grid item xs={3}>
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"/>
+          </Grid>
+          <Grid item xs={3}>
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg"/>
+          </Grid>
+          <Grid item xs={3}>
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg"/>
+          </Grid>
+          <Grid item xs={3}>
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg"/>
+          </Grid>
+          <Grid item xs={3}>
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/npm/npm-original-wordmark.svg"/>
+          </Grid>
+          <Grid item xs={3}>
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg"/>
+          </Grid>
+          <Grid item xs={3}>
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/materialui/materialui-original.svg"/>
+          </Grid>
+          <Grid item xs={3}>
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"/>
+          </Grid>
+          <Grid item xs={3}>
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-plain-wordmark.svg"/>
+          </Grid>
+          <Grid item xs={3}>
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/heroku/heroku-original-wordmark.svg"/>
+          </Grid>
+        </Grid>
+      </Paper>
+      <Footer />
     </Box>
   );
 }

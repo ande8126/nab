@@ -31,7 +31,7 @@ const useStyles = makeStyles( (theme) => ({
         backgroundColor: '#fffef2'
     },
     content: { 
-        padding: '7px 5px',
+        padding: '7px 15px',
         backgroundColor: '#fafdfd',
     },
     recordsSynopsis: {
@@ -134,6 +134,9 @@ const RequestItem = ( {request} ) => {
             className={classes.header}
             />
             <CardContent className={classes.content}>
+                <Typography variant="body2">
+                    Recipient: <span>{request.recipient}</span>
+                </Typography>
                 <FormGroup row>
                     <FormControlLabel
                     control={<Switch checked={request.response} onChange={()=>handleResponse( request.id )} name="checkedA" />}

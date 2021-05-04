@@ -8,10 +8,8 @@ import {
   Typography
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+//styling
 const  useStyles = makeStyles( ( theme )=>({
-  registrationRoot: {
-    //paddingLeft: '30px',
-  },
   formPanel: {
     display: 'flex',
     justifyContent: 'center',
@@ -27,7 +25,6 @@ const  useStyles = makeStyles( ( theme )=>({
   textField: {
     paddingBottom: '10px',
   }
-
 }))
 
 function RegisterForm() {
@@ -52,9 +49,7 @@ function RegisterForm() {
       },
     });
   }; // end registerUser
-
-  ////- YOU HAVE TO COMPLETELY REWORK/STYLE THIS -////
-  // way to get rid of Nav with conditional render?
+  
   return (
     <Box className={classes.registrationRoot}>
           <Typography

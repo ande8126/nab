@@ -4,7 +4,6 @@ import './LandingPage.css';
 import {
   Button,
   Box,
-  Grid, 
   Typography
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -22,9 +21,6 @@ const  useStyles = makeStyles( ( theme )=>({
     margin: '135px 0',
     width: '75%',
     maxWidth: '400px',
-    // paddingTop: '100px',
-    // paddingLeft: '30px',
-    // paddingBottom: '140px',
   }
 }))
 

@@ -5,9 +5,6 @@ import {
   Button,
   Box,
   Divider,
-  Grid, 
-  TextField,
-  Typography
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 const  useStyles = makeStyles( ( theme )=>({
@@ -34,21 +31,6 @@ function LoginPage() {
         </Button>
       </center>
     </Box>
-    // <div>
-    //   <LoginForm />
-
-    //   <center>
-    //     <button
-    //       type="button"
-    //       className="btn btn_asLink"
-    //       onClick={() => {
-    //         history.push('/registration');
-    //       }}
-    //     >
-    //       Register
-    //     </button>
-    //   </center>
-    // </div>
   );
 }
 

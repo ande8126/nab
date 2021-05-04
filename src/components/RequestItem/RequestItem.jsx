@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import clsx from 'clsx';
-/**  MATERIAL UI
- * npm install
- * experiment with theme (make theme.js, ThemeProvider in index.js)
- * 
-*/
 import { 
-    Button, 
     Card,
     CardActions,
     CardContent,
@@ -19,9 +13,8 @@ import {
     FormGroup,
     IconButton, 
     Typography } from '@material-ui/core';
-//customize MaterialUI settings with MakeStyles
 import { makeStyles } from '@material-ui/core/styles';
-//styles go here:
+//styles
 const useStyles = makeStyles( (theme) => ({
     root: {
         minWidth: '100%',
@@ -50,27 +43,20 @@ const useStyles = makeStyles( (theme) => ({
         transform: 'rotate(180deg)',
     },
 }));
-//grid
-//import Grid from '@material-ui/core/Grid'
-//icons
 import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
 
 const RequestItem = ( {request} ) => {
     //format date on page load 
     useEffect( ()=>{
         makeDate( request.date )
-        //NOT WORKING: makePreview( request.email_body )
     }, [] )
-    //needed for MaterialUI classes
+    //needed for styling
     const classes = useStyles();
     //needed for dispatch
     const dispatch = useDispatch();
     //local state for date
     const [ date, setDate ] = useState( '' )
-    //local state for preview
-    const [ preview, setPreview ] = useState( '(preview)' )
     //function to make date more readable
     const makeDate = ( requestDate ) =>{
         console.log( 'the date:', requestDate );
@@ -153,38 +139,6 @@ const RequestItem = ( {request} ) => {
                     </Typography>
                 </CardContent>
             </Collapse>
-            {/* <Grid container>
-                <Grid item xs={1}>
-
-                </Grid>
-                <Grid item xs={12}>
-                    <Typography color="primary" variant="h5">{request.title}</Typography>
-                </Grid>
-                
-                <Grid item xs={12}>
-                    <p>Sent:<span>{date}</span></p>
-                </Grid>
-                <Grid item xs={12}>
-                    <p>Recipient:<span>{request.recipient}</span></p>
-                </Grid>
-                <Grid item xs={12}>
-                    <p>Email:</p>
-                </Grid>
-                <Grid item xs={2} /> 
-                <Grid item xs={8}>
-                    <p>{request.email_body}</p>
-                </Grid>
-                <Grid item xs={2} />
-                <Grid item xs={12}>
-                    <FormGroup row>
-                        <FormControlLabel
-                        control={<Switch checked={request.response} onChange={()=>handleResponse( request.id )} name="checkedA" />}
-                        label="Response"
-                        />
-                    </FormGroup>
-                </Grid>
-            </Grid>
-            </Paper> */}
         </Card>
     )
 }

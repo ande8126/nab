@@ -6,13 +6,11 @@ import {
   Button,
   Box,
   Divider,
-  Grid, 
-  TextField,
   Typography
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+//styling
 const  useStyles = makeStyles( ( theme )=>({
-
   headerLogo: {
     width: '26%',
     maxWidth: '75px',
@@ -21,7 +19,9 @@ const  useStyles = makeStyles( ( theme )=>({
 }))
 
 function RegisterPage() {
+  //needed for history
   const history = useHistory();
+  //needed for styling
   const classes = useStyles();
 
   return (
@@ -39,22 +39,6 @@ function RegisterPage() {
           </Button>
           </center>
     </Box>
-    // <div>
-    //   <RegisterForm />
-
-    //   <center>
-    //     <Button
-    //       type="button"
-    //       variant="contained"
-    //       color="primary"
-    //       onClick={() => {
-    //         history.push('/login');
-    //       }}
-    //     >
-    //       Login
-    //     </Button>
-    //   </center>
-    // </div>
   );
 }
 

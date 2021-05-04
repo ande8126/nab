@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Nav.css';
 import {useSelector, useDispatch} from 'react-redux';
-//mui drawer for making the nav a popoutmenu
 import { 
   AppBar,
   Drawer as MUIDrawer,
@@ -41,11 +40,6 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 function Nav() {
   const user = useSelector((store) => store.user);
-  //needed for history.push
-  const history = useHistory();
-  //needed for dispatch
-  const dispatch = useDispatch();
-  //REWRITE THIS W/CONDITIONAL RENDER SO NO NAV SHOWS ON LOGIN
   let [ loginLinkData, setLoginLinkData ] = useState({
     path: '/login',
     text: 'Login / Register',
@@ -54,22 +48,22 @@ function Nav() {
     loginLinkData.path = '/home';
     loginLinkData.text = 'Home';
   }
+  //needed for history.push
+  const history = useHistory();
+  //needed for dispatch
+  const dispatch = useDispatch();
   //local state for menu icon toggle
   const [ navOpen, setNavOpen ] = useState( false );
-
   //functions to handle nav toggle
   const handleNavOpen = () => {
     setNavOpen( true );
   }
-
   const handleNavClose = () => {
     setNavOpen( false );
   }
-
-  //bring in styling from MUI
+  //needed for styling
   const classes = useStyles();
   const theme = useTheme(); 
-
   //setup variables for MUI drawer
   const navList = [ {
     text: loginLinkData.text,
@@ -88,8 +82,6 @@ function Nav() {
     icon: <ExitToAppIcon />,
     onClick: ()=> {handleNavClose(); dispatch({ type: 'LOGOUT' })}
   } ]
-
-
 
   return (
     <>

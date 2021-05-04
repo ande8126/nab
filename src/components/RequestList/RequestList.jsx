@@ -2,9 +2,8 @@ import React from 'react'
 //import RequestList for props
 import RequestItem from '../RequestItem/RequestItem'
 import { Grid } from '@material-ui/core';
-//customize MaterialUI settings with MakeStyles
 import { makeStyles } from '@material-ui/core/styles';
-//styles go here:
+//styles
 const useStyles = makeStyles({
     gridContainer: {
         paddingLeft: '20px',
@@ -15,10 +14,8 @@ const useStyles = makeStyles({
 const RequestList = ( {requests} ) => {
     const classes = useStyles();
     return (
-        <Grid container className={classes.gridContainer} spacing={4} justify="center">
-            
-            {requests.map( request => <Grid item xs={12}><RequestItem key={request.id} request={request} /></Grid> )}
-            
+        <Grid container className={classes.gridContainer} spacing={4} justify="center">       
+            {requests.map( request => <Grid item xs={12}><RequestItem key={request.id} request={request} /></Grid> )}       
         </Grid>
     )
 }

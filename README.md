@@ -12,15 +12,15 @@ Nab’s Home screen shows a record of the user’s past open records request in 
 
  React, Redux, Express, Passport, and PostgreSQL, MaterialUI (a full list of dependencies can be found in `package.json`).
 
-## See it
+ ## See it
+| ![Create request](screenshots/create.png) | ![Home](screenshots/home.png)
+
+
+## Try it
 
 Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/home](Nab)
 
-## Wireframes
-
-### Nab home screen
-
-![Home](wireframe/wireframe_nab_home.png)
+## Wireframe
 
 ### Nab create request screen
 
@@ -29,7 +29,9 @@ Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/
 ## To-do
 
 [x] Setup
+
   [x] watch boilerplate vids
+
   [x] setup/review components
     - Registration 
     - Home
@@ -37,19 +39,23 @@ Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/
     - RequestItem
     - Create
     - Confirmation
+
   [x] setup Routes
     - Home screen should replace landing screen
     - Do I want to keep the nav bar as is? New style? -- WILL NEED TO CHANGE FOR MOBILE
     - Setup links and useHistory for Nab's workflow (register/login >>> Home >>> CreateRequest >>> Confirmation >>> Home)
+
 [x] Rework Nav
   [x] watch Youtube vid on MaterialUI "drawers"
   [x] replace Nav element with popout
   [x] hamburger menu icon
+
 [x] update register screen - RegisterForm
   [x] update user db to account for first and last name
   [x] add two inputs for first and last name
   [x] add first and last to payload, POST route to make sure it's getting to db
   [x] "join" button
+
 [x] Home pt 1
   [x] build out component
   [x] should replace landing screen
@@ -58,6 +64,7 @@ Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/
     - saga
     - db setup - 'request' table and '/api/request' router
   [x] conditional render for no entries -- "make your first request!"
+
 [x] CreateRequest pt 1
   [x] build out component
     - inputs
@@ -68,10 +75,12 @@ Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/
   [x] function to handle "state" dropdown
   [x] function to link and bring the whole "request" object to "confirmation" screen
   [x] back button-- will become eventually X button in upper right to "close"?
+
 [x] CreateRequest pt 2
   [x] reducer to handle data back from GET route for letters
   [x] saga for GET call from "letter" table
   [x] GET route on server side
+
 [x] Confirmation screen
   [x] useSelector for calling tempRequest from Redux
   [x] build out component
@@ -88,7 +97,9 @@ Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/
     [x] saga for POST call to "request" table
     [x] make request.router.js file
     [x] POST route on server side
-[ ] Home pt 2
+
+[x] Home pt 2
+
   [x] finalize GET route from "request" table to component -- WHY AREN'T NEW ENTRIES SHOWING IN STRINGIFY?
   [x] Display info to DOM
   [x] "Create Request" Icon should be a "fixed" component on bottom
@@ -98,11 +109,10 @@ Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/
   [x] function to handle Response toggle (DELETE)
   [x] dispatch for Response (PUT)
   [ ] SocketIO for instant updating?
-[ ] CreateRequest pt 3
-  [ ] revamp UI of component (breadcrumbs?)
-[ ] Bugs
+
+[x] Bugs
   [x] Text not resetting on "letters" textbox (dropdown handler? POST route?)
-  [ ] Connect StateDropdown to db (Saga/GET to "letters")
+  [x] Connect StateDropdown to db (Saga/GET to "letters")
   [x] Add "user_id" to POST route (so results can be specific)
   [x] Add "user_id" to initial GET route (so results are user specific)
   [x] figure out theme "mixins" so MUI elements dont cover each other
@@ -112,21 +122,23 @@ Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/
   [x] counter for profile page
     -useSelector for records
     -DOM element: counter
-  [ ] Clean up comments/unused code
-    [ ] Home
-    [ ] RequestList
-    [ ] RequestItem
-    [ ] CreateRequest
-    [ ] ConfirmRequest
-    [ ] App.jsx
-    [ ] sagas
-    [ ] reducers
-    [ ] routes
-    [ ] server.js
-    [ ] LoginPage/Form
-    [ ] RegisterPage/Form
-    [ ] LandingPage
-    [ ] AboutPage
+
+  [x] Clean up comments/unused code
+    [x] Home
+    [x] RequestList
+    [x] RequestItem
+    [x] CreateRequest
+    [x] ConfirmRequest
+    [x] App.jsx
+    [x] sagas
+    [x] reducers
+    [x] routes
+    [x] server.js
+    [x] LoginPage/Form
+    [x] RegisterPage/Form
+    [x] LandingPage
+    [x] AboutPage
+
 [x] Styling
   [x] Nav bar - drawers/popout menu
   [x] Home - "+" icon for linking to CreateRequest
@@ -137,5 +149,3 @@ Early concept deployed on Heroku: [https://floating-fjord-59845.herokuapp.com/#/
   [x] Registration screen - inputs/buttons
   [x] Research MUI 'Box' elements
   [x] Make logo for Nab
-
-[ ] Stretch goals...

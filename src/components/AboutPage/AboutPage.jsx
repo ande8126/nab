@@ -70,6 +70,7 @@ function AboutPage() {
   //for request data
   const requests = useSelector( (store) => {
     return store.requests } );
+
   //for readable date
   const [ date, setDate ] = useState( '' );
   const makeDate = ( requestDate ) =>{
@@ -84,7 +85,7 @@ function AboutPage() {
         }  
     }
   }//end makeDate
-  //run makeDate on load
+  //run makeDate && conditionally render request count on load
   useEffect( ()=>{
     if ( requests[0] === undefined ){
       setDate( 'No active requests' )

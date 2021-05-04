@@ -82,21 +82,20 @@ function App() {
           </ProtectedRoute>
           {/* Nab will show Home upon login. User screen saved to serve as profile */}
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
             exact
             path="/home"
           >
             <Home />
           </ProtectedRoute>
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows CreateRequest else shows LoginPage
             exact
             path="/create"
           >
             <CreateRequest />
           </ProtectedRoute>
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows ConfirmRequest else shows LoginPage
             exact
             path="/confirm"
           >
@@ -143,7 +142,6 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        {/* <Footer /> */}
       </div>
     </Router>
   );

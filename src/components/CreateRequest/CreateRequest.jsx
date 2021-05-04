@@ -7,7 +7,6 @@ import {
     Button,
     Box,
     Divider,
-    Grid, 
     TextField,
     Typography
     } from '@material-ui/core';
@@ -42,28 +41,27 @@ const CreateRequest = () => {
     const [ tempRequest, setTempRequest ] = useState({});
     //bring down user to use user.id as foreign key
     const user = useSelector((store) => store.user)
-    //set user_id on load
+    //dispatch GET route for letters table && set user_id on load
     useEffect( ()=>{
-        //get letters data for dropdown (NOT WORKING)
+        //letters table for dropdown
         dispatch( { type: 'FETCH_ALL_LETTERS' } );
         //set user_id foreign key
         setTempRequest( {...tempRequest, user_id: user.id } );
     }, [])
+    //EVENT HANDLERS
     const handleTitle = ( event ) =>{
         setTempRequest( { ...tempRequest, title: event.target.value })
     }
-
     const handleRecipient = ( event ) =>{
         setTempRequest( { ...tempRequest, recipient: event.target.value })
     }
-
-    ////- HOW DO I LAY THIS OUT? RECORD DETAILS SHOULD ADD TO MIDDLE OF TEXTBOX -////
-    //this handler doesn't add to object, but to the textbox below
-    // const handleRecords = ( event ) =>{
-    //     setRecordDetails( event.target.value )
-    // }
-
-    //useSelector to draw from redux
+    //function to handle textbox
+    const handleText = ( event ) =>{
+        console.log( 'in handleText', event.target.value );
+        //setEmailBody( starterText.body );
+        setTempRequest( {...tempRequest, email_body: event.target.value } );
+    }
+    //USESELECTORS
     //letter to edit
     const starterText = useSelector( ( store )=>{
         return store.letter;
@@ -72,26 +70,14 @@ const CreateRequest = () => {
     const letters = useSelector( ( store )=>{
         return store.allLetters;
     })
-
-    //function to handle textbox
-    const handleText = ( event ) =>{
-        console.log( 'in handleText', event.target.value );
-        //setEmailBody( starterText.body );
-        setTempRequest( {...tempRequest, email_body: event.target.value } );
-    }
-
-    //GET TEXT DOWN FROM DB
-    //handler for dropdown to send GET request to db
-    //props to StateDropdown component
+    //get specific letter text down from db
     const getStateLetter = ( event ) =>{
         dispatch( { type: 'FETCH_LETTER', payload: event.target.value } );
     }
-
     //make object and bring over to confirmation page
     const createLetter = ( object ) =>{
         console.log( 'in createLetter with:', object );
-        ////- think I need "breadcrumbs" approach tho -////
-        //for now, send object to redux
+        //send object to redux
         dispatch( {type: 'SET_TEMP_REQUEST', payload: object } );
         //move to confirmation 
         history.push( '/confirm' )
@@ -105,11 +91,6 @@ const CreateRequest = () => {
                 BUILD YOUR REQUEST
             </Typography>
             <Divider />
-            {/* <select>
-                <option value=''>Please select</option>
-                
-            </select> */}
-            {/* Props GET call to StateDropdown: */}
             <StateDropdown letters={letters} getStateLetter={getStateLetter} />
             <br />
             <br />

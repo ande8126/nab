@@ -84,19 +84,6 @@ const RequestItem = ( {request} ) => {
             }
         }
     }//end makeDate
-
-    //function to make preview for preview pane
-    //WHY ISNT THIS WORKING?
-    // const makePreview = ( email ) =>{
-    //     console.log( 'in makePreview with:', typeof email );
-    //     let tempPreview = '';
-    //     for( let i=0; i<250; i++ ){
-    //         console.log( email[i] );
-    //         tempPreview += email[i];
-    //     }
-    //     setPreview( tempPreview + ' ...' )
-    // } 
-
     //function to delete a request
     const deleteRequest = ( id ) =>{
         console.log( 'in deleteRequest', id );
@@ -110,7 +97,6 @@ const RequestItem = ( {request} ) => {
         //this triggers new GET for all requests but it's janky??
         dispatch( { type: 'FETCH_REQUESTS' } );
     };
-
     //local state to expand email
     const [ expanded, setExpanded ] = useState( false );
     //handle expand click

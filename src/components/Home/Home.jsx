@@ -3,22 +3,19 @@ import { useState, useEffect } from 'react'
 import Nav from '../Nav/Nav';
 //pass in RequestList for props
 import RequestList from '../RequestList/RequestList'
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './Home.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     AppBar,
     Box,
-    TextField,
     Divider,
     Fab,
-    IconButton,
     Toolbar,
     Typography,
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-
-//- STYLING STUFF -//
+//styling
 import { makeStyles } from '@material-ui/core/styles';
 const  useStyles = makeStyles(theme=>({
     homeRoot: {
@@ -57,51 +54,38 @@ const  useStyles = makeStyles(theme=>({
     appBarSpacer: theme.mixins.toolbar,
 }))
 
-
 const Home = () => {
-    //needed for MaterialUI classes
+    //needed for styling
     const classes = useStyles();
     //needed for dispatch
     const dispatch = useDispatch();
     //needed for history
     const history = useHistory();
-
     //dispatch for GET call on load for all requests
     useEffect(()=>{
-        dispatch( { type: 'FETCH_REQUESTS' } ); //this will need to include user_id as param
+        dispatch( { type: 'FETCH_REQUESTS' } );
     }, [] )
-
-    //start by bringing down requests with useSelector
+    //bring down all requests with useSelector
     const requests = useSelector( (store) => {
         return store.requests } );
-    //then get user
-    //const user = useSelector((store) => store.user) 
-
     //conditional in case user hasn't made requests yet
     const displayWelcome = () =>{
         if ( requests[0] === undefined ){
             return(
-                // way to style this w/bouncing arrow?
                 <p>Make your first request!</p>
             )
-        
         }
     }
-    
     //click handler for adding new request
     const addRequest = () =>{
         history.push( '/create' )
     }
-
-    //ALSO: Maybe 'bouncing' arrow icon pointing to plus sign icon?
-    // const classes = useStyles();
-    console.log('requests:', requests);
+    //console.log('requests:', requests);
     return (
 
         <Box className={classes.homeRoot}>
             <Nav className={classes.nav}/>
             <div className={classes.navBarSpacer} />
-
             <Typography variant="h2" className={classes.header} color="textSecondary">
                 HOME
             </Typography>
@@ -110,7 +94,6 @@ const Home = () => {
             {displayWelcome()}
             {/* props to RequestList for map */}
             <RequestList requests={requests} />
-            {/* Plus sign icon here, links to CreateRequest */}
             <div className={classes.appBarSpacer} />
             <AppBar position="fixed" color="primary" className={classes.appBar}>
                 <Toolbar>
@@ -120,9 +103,6 @@ const Home = () => {
                     <div className={classes.grow} />
                 </Toolbar>
             </AppBar>
-            {/* <Link to="/create">
-                <button>Create Request</button>
-            </Link> */}
         </Box>
     )
 }

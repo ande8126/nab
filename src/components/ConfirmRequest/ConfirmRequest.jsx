@@ -42,7 +42,7 @@ const ConfirmRequest = () => {
     const dispatch = useDispatch();
     //needed for history
     const history = useHistory();
-    //needed for mui styling
+    //needed for styling
     const classes = useStyles();
     //useSelector to bring in tempRequest object
     const request = useSelector( ( store )=>{
@@ -58,31 +58,27 @@ const ConfirmRequest = () => {
     const makeEmail = ( emailObject ) =>{
         setEmailBody( `Dear ${emailObject.recipient}, \n${emailObject.email_body}`)
     }
-
-    //CLIPBOARD SETUP HERE
+    //COPY-TO-CLIPBOARD SETUP HERE
     //useClippy tool imported, acts like useState
     const [ clipboard, setClipboard ] = useClippy();
-    //disable button if text is already copied
+    //conditional render: disable button if text is already copied
     const isDisabled = clipboard === emailBody;
-    
+    //click handler for copy btn
     const handleCopy = useCallback(()=>{
         setClipboard( emailBody )
     }, [ setClipboard, emailBody ])
-
-    //function to send email object and go back to Home screen
+    //function to dispatch email object for POST route and go back to Home screen
     const addRequest = ( emailObject ) =>{
         dispatch( { type: 'SEND_REQUEST', payload: emailObject });
         history.push( '/home' );
     }
-
-
 
     return (
         <Box className={classes.confirmRoot}>
             <Nav className={classes.nav}/>
             <div className={classes.navBarSpacer} />
             <Typography variant="h5" color="textSecondary" className={classes.header}>
-                Confirm your request{/* FOR TESTING REDUX STORE: <p>{JSON.stringify( emailBody )}</p> */}
+                Confirm your request
             </Typography>
             <Divider className={classes.divider}/>
             <Grid container spacing={1}>

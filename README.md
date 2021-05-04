@@ -1,6 +1,5 @@
 
 # Nab
-![logo](public/nav_logo_main.png)
 
 ## Description
 

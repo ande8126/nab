@@ -82,3 +82,5 @@ I request a waiver of all fees for this request since the disclosure of the info
 
 I will contact your office within 24 hours to discuss when I can expect fulfillment of my request and payment of fees.'
 );
+
+-- TO CHANGE: ADD DATA HERE FOR OTHER STATES --
